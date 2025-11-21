@@ -3,12 +3,12 @@ import { TranslationContent } from './types';
 
 export const IMAGES = {
   holstein: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Cow_female_black_white.jpg/640px-Cow_female_black_white.jpg",
-  montbeliarde: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Vache_Montb%C3%A9liarde_Jura.jpg/640px-Vache_Montb%C3%A9liarde_Jura.jpg",
-  angus: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Black_Angus_cow_and_calf.jpg/640px-Black_Angus_cow_and_calf.jpg",
-  brahman: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Brahman_Cattle.jpg/640px-Brahman_Cattle.jpg",
-  atlas: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Vache_de_l%27Atlas.jpg/640px-Vache_de_l%27Atlas.jpg",
-  jersey: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Jersey_Cow.jpg/640px-Jersey_Cow.jpg",
-  simmental: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Simmentaler_Fleckvieh.jpg/640px-Simmentaler_Fleckvieh.jpg"
+  montbeliarde: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/La_ferme_en_ville_2009_-_Montbeliarde.JPG/960px-La_ferme_en_ville_2009_-_Montbeliarde.JPG",
+  angus: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Angus_cattle_10.jpg/640px-Angus_cattle_10.jpg",
+  brahman: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Brahman_%28EMAPA%29_110307_REFON.jpg/960px-Brahman_%28EMAPA%29_110307_REFON.jpg",
+  atlas: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vatche_Brune_Atlasse_emey_veye.jpg/640px-Vatche_Brune_Atlasse_emey_veye.jpg",
+  jersey: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Jersey_cow_J4.jpg/640px-Jersey_cow_J4.jpg",
+  simmental: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg/640px-Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg"
 };
 
 export const CONTENT: Record<string, TranslationContent> = {
@@ -48,7 +48,7 @@ export const CONTENT: Record<string, TranslationContent> = {
     sections: {
       cover: {
         title: "دراسة تحليلية مقارنة لسلالات الماشية في الجزائر والعالم",
-        preparedBy: "من إعداد الطلبة الباحثين:",
+        preparedBy: "من إعداد الطالبين:",
         students: ["أحمد رياض دليحة", "منى لخذاري"],
         supervisor: "تحت إشراف هيئة التدريس",
         year: "السنة الجامعية: 2025 / 2026",
@@ -235,7 +235,7 @@ export const CONTENT: Record<string, TranslationContent> = {
               region: "الشرق الجبلي", 
               features: "صغيرة، رمادية، متسلقة للجبال.",
               status: "مهددة بالانقراض",
-              population: "جيوب معزولة في جبال قلمة وسوق أهراس.",
+              population: "جيوب معزولة في جبال قالمة وسوق أهراس.",
               coordinates: [36.4621, 7.4261],
               regionPolygon: [[36.2, 7.2], [36.8, 7.2], [36.8, 8.0], [36.2, 8.0]],
               expandedInfo: {
@@ -273,7 +273,7 @@ export const CONTENT: Record<string, TranslationContent> = {
               }
             },
             { 
-              name: "الشليفية (Chélifienne)", 
+              name: "الشلفية (Chélifienne)", 
               region: "الغرب", 
               features: "بنية محمرة، الأفضل حليباً.",
               status: "حرجة جداً",
@@ -330,7 +330,7 @@ export const CONTENT: Record<string, TranslationContent> = {
           title: "تقرير الكفاءة البحثية",
           rank: "الرتبة العلمية:",
           score: "المعدل النهائي:",
-          message: "أداء ممتاز يدل على استيعاب عميق للمفاهيم."
+          message: ""
         }
       }
     }
