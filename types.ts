@@ -1,19 +1,26 @@
 
 export type Language = 'en' | 'fr' | 'ar';
 
+export interface Hotspot {
+  x: number; // Percentage from left
+  y: number; // Percentage from top
+  label: string;
+  text: string;
+}
+
 export interface BreedDetail {
   id: string;
   name: string;
   origin: string; // Acts as "Localisation"
   type: string;   // Acts as "Production"
-  color: string;  // New
-  height: string; // New
+  color: string;
+  height: string;
   image: string;
   stats: {
     milk: string;
     fat: string;
     protein: string;
-    weight: string; // Already exists
+    weight: string;
   };
   clinicalProfile: {
     risks: string;
@@ -27,6 +34,7 @@ export interface BreedDetail {
     diseases: string;
     breeding: string;
   };
+  hotspots?: Hotspot[]; // Added hotspots
 }
 
 export interface ComparisonDataPoint {
@@ -128,9 +136,9 @@ export interface TranslationContent {
           name: string; 
           region: string; 
           features: string;
-          color: string;  // New
-          height: string; // New
-          weight: string; // New
+          color: string;
+          height: string;
+          weight: string;
           status: string;      
           population: string;  
           coordinates: [number, number]; 

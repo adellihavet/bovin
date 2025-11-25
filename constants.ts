@@ -130,7 +130,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "نظام غذائي عالي الطاقة (TMR) يعتمد على السيلاج والمركزات لتلبية متطلبات الإنتاج العالي (16-18 MJ/kg).",
                 diseases: "عرضة لأمراض التمثيل الغذائي (حمى الحليب، الكيتوزية) بسبب الإنتاج العالي.",
                 breeding: "تلقيح اصطناعي مكثف باستخدام ثيران مختبرة جينياً لتحسين إنتاج الحليب وشكل الضرع."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 75, label: "الضرع", text: "ضرع ضخم وعروق لبنية بارزة لدعم الإنتاج الغزير." },
+                { x: 20, y: 40, label: "الجسم", text: "هيكل زاوي (مثلثي) يشير إلى تحويل العلف إلى حليب وليس لحم." }
+              ]
             },
             {
               id: "montbeliarde",
@@ -148,7 +152,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "مرنة؛ تزدهر على المراعي العشبية والقش، ويمكنها تحويل الأعلاف الخشنة بكفاءة.",
                 diseases: "مقاومة نسبياً لالتهاب الضرع بفضل صحة الضرع الجيدة، أقل عرضة للعرج.",
                 breeding: "تربية تركز على جودة البروتين (Kappa Casein B) لإنتاج الأجبان الفرنسية الراقية (Comté)."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "الصلابة", text: "بنية عضلية قوية تجعلها مناسبة للإنتاج المختلط." },
+                { x: 30, y: 30, label: "الرأس", text: "رأس أبيض مميز (Tête Blanche) وهو علامة السلالة." }
+              ]
             },
             {
               id: "brahman",
@@ -166,7 +174,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "قادرة على هضم الأعلاف الاستوائية منخفضة الجودة والألياف العالية بكفاءة.",
                 diseases: "جلد سميك ومتحرك يمنع لدغات الحشرات، ومقاومة طبيعية للتريبانوسوميات والقراد.",
                 breeding: "تستخدم بكثرة في برامج التهجين (F1) لإضافة الصلابة الهجينة للسلالات الأوروبية في المناطق الحارة."
-              }
+              },
+              hotspots: [
+                { x: 30, y: 20, label: "السنام", text: "كتلة عضلية ودهنية تساعد في تخزين الطاقة وتنظيم الحرارة." },
+                { x: 45, y: 60, label: "الجلد (اللبب)", text: "جلد مترهل يزيد مساحة السطح لتبريد الجسم بفعالية." }
+              ]
             },
             {
               id: "jersey",
@@ -184,7 +196,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "تتطلب علفاً عالي الكثافة الطاقوية نظراً لصغر حجم الكرش، حساسة لنقص الكالسيوم.",
                 diseases: "أكثر عرضة لحمى الحليب بعد الولادة مباشرة بسبب ارتفاع تركيز الكالسيوم في اللبأ.",
                 breeding: "مفضلة جداً لتلقيح العجلات (Bakers) نظراً لصغر حجم المواليد وسهولة الولادة."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "الحجم", text: "حجم صغير يقلل تكلفة الصيانة ويزيد كفاءة التحويل." },
+                { x: 30, y: 30, label: "العيون", text: "عيون كبيرة وبارزة تميز السلالة." }
+              ]
             },
             {
               id: "angus",
@@ -202,7 +218,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "تستجيب جيداً للتسمين بالحبوب (Grain-finished) للحصول على درجة ترخيم عالية.",
                 diseases: "يجب مراقبة الأمراض الوراثية المتنحية (مثل AM).",
                 breeding: "الخيار الأول في برامج التسمين لإنتاج لحوم الستيك عالية الجودة."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "الجسم", text: "جسم اسطواني ممتلئ باللحم." },
+                { x: 80, y: 50, label: "الأرداف", text: "عضلات خلفية ممتلئة تعطي قطع لحم ممتازة." }
+              ]
             },
             {
               id: "simmental",
@@ -220,7 +240,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "تتطلب كميات كبيرة من العلف (High Intake Capacity) للحفاظ على حجمها وإنتاجها.",
                 diseases: "معدلات التهاب ضرع منخفضة، لكن يجب الحذر من مشاكل الأقدام في الأرضيات الصلبة.",
                 breeding: "شائعة جداً في أوروبا لإنتاج عجول تسمين ممتازة مع الحفاظ على دخل من الحليب."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "الهيكل", text: "هيكل عظمي قوي وعضلات بارزة." },
+                { x: 50, y: 70, label: "الإنتاج", text: "توازن جيد بين الضرع واللحم." }
+              ]
             }
           ]
         }
@@ -257,7 +281,7 @@ export const CONTENT: Record<string, TranslationContent> = {
               region: "الشرق الجبلي", 
               features: "صغيرة، رمادية، متسلقة للجبال.",
               color: "رمادي داكن",
-              height: "115 سم",
+              height: "115 cm",
               weight: "250-300 كغ",
               status: "مهددة بالانقراض",
               population: "جيوب معزولة في جبال قلمة وسوق أهراس.",
@@ -488,7 +512,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "High-energy Total Mixed Ration (TMR) rich in concentrates to support massive milk production (16-18 MJ/kg DM).",
                 diseases: "Prone to metabolic disorders like milk fever and ketosis due to negative energy balance.",
                 breeding: "Heavy reliance on Artificial Insemination with genomically tested sires for milk solids and udder conformation."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 75, label: "Udder", text: "Huge udder with prominent veins to support massive production." },
+                { x: 20, y: 40, label: "Body", text: "Angular, triangular body shape indicating feed conversion to milk." }
+              ]
             },
             {
               id: "montbeliarde",
@@ -506,7 +534,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "Flexible; thrives on grass/hay-based diets and can convert roughage efficiently.",
                 diseases: "Relatively resistant to mastitis due to good udder health; lower incidence of lameness.",
                 breeding: "Selection focuses on protein quality (Kappa Casein B) for AOC cheese production (e.g., Comté)."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "Strength", text: "Strong muscular build suitable for dual purpose." },
+                { x: 30, y: 30, label: "Head", text: "Distinctive white head (Tête Blanche)." }
+              ]
             },
             {
               id: "brahman",
@@ -524,7 +556,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "Excellent digester of low-quality, high-fiber tropical forages.",
                 diseases: "Thick, mobile skin repels insects; highly resistant to trypanosomiasis and tick-borne diseases.",
                 breeding: "Widely used in crossbreeding (F1) to add hybrid vigor and hardiness to European breeds in hot climates."
-              }
+              },
+              hotspots: [
+                { x: 30, y: 20, label: "Hump", text: "Muscle and fat hump for energy storage and thermoregulation." },
+                { x: 45, y: 60, label: "Dewlap", text: "Loose skin to increase surface area for cooling." }
+              ]
             },
             {
               id: "jersey",
@@ -542,7 +578,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "Requires high energy density feed due to smaller rumen capacity; prone to calcium deficiency.",
                 diseases: "Susceptible to Milk Fever immediately post-calving due to high calcium output in colostrum.",
                 breeding: "Highly preferred for breeding heifers due to small calf size."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "Size", text: "Small size reduces maintenance costs." },
+                { x: 30, y: 30, label: "Eyes", text: "Large, prominent eyes are characteristic." }
+              ]
             },
             {
               id: "angus",
@@ -560,7 +600,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "Responds well to grain finishing for maximum marbling but performs excellently on grass.",
                 diseases: "Carriers of recessive genetic defects like Arthrogryposis Multiplex (AM) must be screened.",
                 breeding: "The gold standard for beef quality programs; widely used terminal sire."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "Body", text: "Cylindrical, meat-filled body shape." },
+                { x: 80, y: 50, label: "Rump", text: "Full hindquarters providing excellent meat cuts." }
+              ]
             },
             {
               id: "simmental",
@@ -578,7 +622,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "High intake capacity; requires substantial forage to maintain large body frame.",
                 diseases: "Generally healthy udders, but heavy weight can cause hoof issues on concrete.",
                 breeding: "Popular in Europe for producing excellent feeder calves while maintaining milk income."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "Frame", text: "Heavy skeletal frame and muscularity." },
+                { x: 50, y: 70, label: "Udder", text: "Good balance of udder health and beef capacity." }
+              ]
             }
           ]
         }
@@ -846,7 +894,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "Ration Totale Mixte (RTM) haute énergie, riche en concentrés pour soutenir une production massive (16-18 MJ/kg MS).",
                 diseases: "Sujette aux troubles métaboliques comme la fièvre de lait et l'acétonémie en raison du bilan énergétique négatif.",
                 breeding: "Dépendance forte à l'insémination artificielle avec taureaux testés génomiquement pour les solides du lait et la conformation du pis."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 75, label: "Pis", text: "Pis énorme avec veines apparentes pour soutenir une production massive." },
+                { x: 20, y: 40, label: "Corps", text: "Forme angulaire indiquant la conversion de nourriture en lait." }
+              ]
             },
             {
               id: "montbeliarde",
@@ -864,7 +916,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "Flexible ; prospère sur des régimes à base d'herbe/foin et convertit efficacement les fourrages grossiers.",
                 diseases: "Relativement résistante aux mammites grâce à une bonne santé du pis ; faible incidence de boiterie.",
                 breeding: "Sélection axée sur la qualité des protéines (Kappa Caséine B) pour la production de fromages AOC (ex : Comté)."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "Force", text: "Construction musculaire solide adaptée à l'usage mixte." },
+                { x: 30, y: 30, label: "Tête", text: "Tête blanche distinctive (Tête Blanche)." }
+              ]
             },
             {
               id: "brahman",
@@ -882,7 +938,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "Excellente digestion des fourrages tropicaux de faible qualité et riches en fibres.",
                 diseases: "Peau épaisse et mobile repoussant les insectes ; très résistante aux trypanosomoses et maladies à tiques.",
                 breeding: "Largement utilisée en croisement (F1) pour ajouter de la vigueur hybride aux races européennes en climats chauds."
-              }
+              },
+              hotspots: [
+                { x: 30, y: 20, label: "Bosse", text: "Bosse musculaire et graisseuse pour le stockage d'énergie et la thermorégulation." },
+                { x: 45, y: 60, label: "Fanon", text: "Peau lâche augmentant la surface pour le refroidissement." }
+              ]
             },
             {
               id: "jersey",
@@ -900,7 +960,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "Nécessite une alimentation dense en énergie due à la petite capacité du rumen ; sensible aux carences en calcium.",
                 diseases: "Plus susceptible à la fièvre de lait post-partum en raison de la forte production de calcium dans le colostrum.",
                 breeding: "Très prisée pour l'insémination des génisses grâce à la petite taille des veaux."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "Taille", text: "Petite taille réduisant les coûts d'entretien." },
+                { x: 30, y: 30, label: "Yeux", text: "Grands yeux proéminents caractéristiques." }
+              ]
             },
             {
               id: "angus",
@@ -918,7 +982,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "Répond bien à la finition au grain pour un persillé maximal mais performe excellemment à l'herbe.",
                 diseases: "Porteurs de défauts génétiques récessifs comme l'Arthrogrypose Multiple (AM) à surveiller.",
                 breeding: "Le standard d'or pour les programmes de qualité de viande ; largement utilisée comme taureau terminal."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "Corps", text: "Corps cylindrique rempli de viande." },
+                { x: 80, y: 50, label: "Croupe", text: "Arrière-train plein offrant d'excellents morceaux de viande." }
+              ]
             },
             {
               id: "simmental",
@@ -936,7 +1004,11 @@ export const CONTENT: Record<string, TranslationContent> = {
                 diet: "Grande capacité d'ingestion ; nécessite des fourrages abondants pour maintenir son grand gabarit.",
                 diseases: "Généralement saine du pis, mais le poids élevé peut causer des problèmes de sabots sur béton.",
                 breeding: "Populaire en Europe pour produire d'excellents veaux d'engraissement tout en maintenant un revenu laitier."
-              }
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "Charpente", text: "Ossature lourde et muscularité." },
+                { x: 50, y: 70, label: "Pis", text: "Bon équilibre entre santé du pis et capacité bouchère." }
+              ]
             }
           ]
         }
@@ -958,7 +1030,7 @@ export const CONTENT: Record<string, TranslationContent> = {
         content: {
           title: "La Brune de l'Atlas : Patrimoine Biologique",
           description: "La 'Brune de l'Atlas' est un réservoir génétique rare, caractérisé par une résilience exceptionnelle aux conditions difficiles.",
-          heroExpandedText: "Cette race s'est adaptée sur des milliers d'années à l'environnement nord-africain. Elle possède une efficacité unique de conversion des végétaux grossiers et une résistance naturelle aux maladies du sang transmises par les tiques (Babésiose & Theilériose). Cependant, sa faible production laitière (env. 1000L) a conduit à des croisements anarchiques.",
+          heroExpandedText: "Cette race s'est adaptée sur des milliers d'années à l'environnement nord-africain. Elle possède une efficacité unique de conversion des végétaux grossiers et une résistance naturelle aux maladies du sang transmises par les tiques (Babésiose & Theilériose). Cependant, sa faible production laitière (env. 1000L) has conduit à des croisements anarchiques.",
           readMore: "Détails Environnementaux",
           showLess: "Masquer",
           subBreedsTitle: "Écotypes (Sous-races)",
@@ -1086,5 +1158,3 @@ export const CONTENT: Record<string, TranslationContent> = {
     }
   }
 };
-
-

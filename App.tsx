@@ -6,22 +6,30 @@ import Quiz from './components/Quiz';
 import AlgeriaMap from './components/AlgeriaMap';
 import ImageWithSkeleton from './components/ImageWithSkeleton';
 import PronunciationBtn from './components/PronunciationBtn';
-import { Lock, Award, BookOpen, Activity, Map, Microscope, ChevronLeft, CheckSquare, Square, Globe, Book, X, ArrowDown, ArrowUp } from 'lucide-react';
+import ImageZoomModal from './components/ImageZoomModal';
+import { Lock, Award, BookOpen, Activity, Map, Microscope, ChevronLeft, CheckSquare, Square, Globe, Book, X, ArrowDown, ArrowUp, ZoomIn } from 'lucide-react';
 import { BreedDetail, Language, ComparisonDataPoint } from './types';
 
-const BreedCard: React.FC<{ breed: BreedDetail; labels: any; readMoreLabel: string; showLessLabel: string; lang: Language }> = ({ breed, labels, readMoreLabel, showLessLabel, lang }) => {
+const BreedCard: React.FC<{ breed: BreedDetail; labels: any; readMoreLabel: string; showLessLabel: string; lang: Language; onZoom: (breed: BreedDetail) => void }> = ({ breed, labels, readMoreLabel, showLessLabel, lang, onZoom }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div className="glass-card rounded-xl overflow-hidden group border-b-4 border-academic-primary hover:border-academic-accent flex flex-col h-full">
-      <ImageWithSkeleton 
-        src={breed.image} 
-        alt={breed.name} 
-        containerClassName="h-56 bg-slate-800"
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-      />
-      <div className="absolute top-0 right-0 bg-academic-primary text-white text-xs font-bold px-4 py-2 rounded-bl-xl shadow-lg z-20">
-        {breed.type}
+      <div className="relative h-56 cursor-zoom-in" onClick={() => onZoom(breed)}>
+        <ImageWithSkeleton 
+          src={breed.image} 
+          alt={breed.name} 
+          containerClassName="h-full bg-slate-800"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+           <div className="bg-black/60 p-2 rounded-full text-white backdrop-blur-sm">
+             <ZoomIn size={24} />
+           </div>
+        </div>
+        <div className="absolute top-0 right-0 bg-academic-primary text-white text-xs font-bold px-4 py-2 rounded-bl-xl shadow-lg z-20 pointer-events-none">
+          {breed.type}
+        </div>
       </div>
       
       <div className="p-6 flex-1 flex flex-col">
@@ -237,6 +245,9 @@ const App: React.FC = () => {
   const [showGlossary, setShowGlossary] = useState(false);
   const [isHeroExpanded, setIsHeroExpanded] = useState(false);
   
+  // Image Zoom State
+  const [zoomedBreed, setZoomedBreed] = useState<BreedDetail | null>(null);
+
   // Algeria Map State
   const [selectedMapRegion, setSelectedMapRegion] = useState<number | null>(null);
   const subBreedRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -308,6 +319,17 @@ const App: React.FC = () => {
   return (
     <div dir={t.direction} className="min-h-screen flex font-sans text-slate-200 bg-thesis-gradient">
       <GlossaryModal isOpen={showGlossary} onClose={() => setShowGlossary(false)} title={t.glossary.title} terms={t.glossary.terms} />
+      
+      {/* Zoom Modal */}
+      {zoomedBreed && (
+        <ImageZoomModal 
+          isOpen={!!zoomedBreed}
+          onClose={() => setZoomedBreed(null)}
+          imageSrc={zoomedBreed.image}
+          altText={zoomedBreed.name}
+          hotspots={zoomedBreed.hotspots}
+        />
+      )}
       
       {/* Sidebar */}
       <aside className="w-80 bg-[#020617] border-l border-white/5 flex flex-col fixed h-full z-30 hidden md:flex shadow-[5px_0_30px_rgba(0,0,0,0.5)]">
@@ -470,6 +492,7 @@ const App: React.FC = () => {
                           readMoreLabel={t.sections.global.content.readMore} 
                           showLessLabel={t.sections.global.content.showLess}
                           lang={lang}
+                          onZoom={setZoomedBreed}
                         />
                       ))}
                    </div>
