@@ -4,14 +4,16 @@ export type Language = 'en' | 'fr' | 'ar';
 export interface BreedDetail {
   id: string;
   name: string;
-  origin: string;
-  type: string;
+  origin: string; // Acts as "Localisation"
+  type: string;   // Acts as "Production"
+  color: string;  // New
+  height: string; // New
   image: string;
   stats: {
     milk: string;
     fat: string;
     protein: string;
-    weight: string;
+    weight: string; // Already exists
   };
   clinicalProfile: {
     risks: string;
@@ -97,6 +99,12 @@ export interface TranslationContent {
         description: string;
         readMore: string;
         showLess: string;
+        labels: {
+          color: string;
+          height: string;
+          weight: string;
+          origin: string;
+        };
         breeds: BreedDetail[];
       };
     };
@@ -111,10 +119,18 @@ export interface TranslationContent {
         readMore: string;
         showLess: string;
         subBreedsTitle: string;
+        labels: {
+          color: string;
+          height: string;
+          weight: string;
+        };
         subBreeds: { 
           name: string; 
           region: string; 
           features: string;
+          color: string;  // New
+          height: string; // New
+          weight: string; // New
           status: string;      
           population: string;  
           coordinates: [number, number]; 

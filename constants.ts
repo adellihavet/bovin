@@ -1,4 +1,3 @@
-
 import { TranslationContent } from './types';
 
 export const IMAGES = {
@@ -48,7 +47,7 @@ export const CONTENT: Record<string, TranslationContent> = {
     sections: {
       cover: {
         title: "دراسة تحليلية مقارنة لسلالات الماشية في الجزائر والعالم",
-        preparedBy: "من إعداد الطالبين:",
+        preparedBy: "من إعداد الطلبة الباحثين:",
         students: ["أحمد رياض دليحة", "منى لخذاري"],
         supervisor: "تحت إشراف هيئة التدريس",
         year: "السنة الجامعية: 2025 / 2026",
@@ -108,12 +107,20 @@ export const CONTENT: Record<string, TranslationContent> = {
           description: "دراسة تفصيلية لأهم السلالات المؤثرة في الاقتصاد العالمي للإنتاج الحيواني.",
           readMore: "اقرأ المزيد",
           showLess: "إخفاء التفاصيل",
+          labels: {
+            color: "اللون",
+            height: "الارتفاع",
+            weight: "الوزن",
+            origin: "المنشأ"
+          },
           breeds: [
             {
               id: "holstein",
               name: "هولشتاين (Holstein)",
               origin: "هولندا",
               type: "حلوب (صناعي)",
+              color: "أسود وأبيض / أحمر",
+              height: "145 سم",
               image: IMAGES.holstein,
               stats: { milk: "10,000+ كغ", fat: "3.7%", protein: "3.2%", weight: "650 كغ" },
               clinicalProfile: { risks: "التهاب الضرع، العرج، انزياح المنفحة", resistance: "ضعيفة للمناخ الحار", reproductive: "صعوبة ولادة متوسطة" },
@@ -130,6 +137,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "مونبيليارد (Montbéliarde)",
               origin: "فرنسا",
               type: "مختلطة",
+              color: "أحمر مرقط (Pie Rouge)",
+              height: "140 سم",
               image: IMAGES.montbeliarde,
               stats: { milk: "7,500 كغ", fat: "3.9%", protein: "3.45%", weight: "700 كغ" },
               clinicalProfile: { risks: "مقاومة جيدة للتهاب الضرع", resistance: "صلابة بدنية عالية", reproductive: "خصوبة ممتازة" },
@@ -146,6 +155,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "براهمان (Brahman)",
               origin: "الولايات المتحدة (أصل هندي)",
               type: "لاحم (مناخ حار)",
+              color: "رمادي فاتح / أحمر",
+              height: "145 سم",
               image: IMAGES.brahman,
               stats: { milk: "منخفض", fat: "4.5%", protein: "3.6%", weight: "500-800 كغ" },
               clinicalProfile: { risks: "قليلة الأمراض", resistance: "عالية جداً للقراد والحرارة", reproductive: "نضج متأخر قليلاً" },
@@ -162,6 +173,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "جيرسي (Jersey)",
               origin: "جزيرة جيرسي (المملكة المتحدة)",
               type: "حلوب (دسم عالي)",
+              color: "بني فاتح (Fawn)",
+              height: "125 سم",
               image: IMAGES.jersey,
               stats: { milk: "6,000 كغ", fat: "5.4%", protein: "3.9%", weight: "450 كغ" },
               clinicalProfile: { risks: "حمى الحليب (Hypocalcemia)", resistance: "تحمل جيد للحرارة، حوافر صلبة", reproductive: "سهولة ولادة ممتازة" },
@@ -178,6 +191,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "أنجوس (Aberdeen Angus)",
               origin: "اسكتلندا",
               type: "لاحم (فاخر)",
+              color: "أسود / أحمر",
+              height: "135 سم",
               image: IMAGES.angus,
               stats: { milk: "منخفض", fat: "عالٍ (مرخم)", protein: "جودة عضلية", weight: "800-1000 كغ" },
               clinicalProfile: { risks: "مشاكل وراثية نادرة", resistance: "مقاومة للبرد، بدون قرون", reproductive: "سهولة ولادة ونضج مبكر" },
@@ -194,6 +209,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "سيمينتال (Simmental)",
               origin: "سويسرا",
               type: "مختلطة (لحم وحليب)",
+              color: "أبيض قشدي وأحمر",
+              height: "145 سم",
               image: IMAGES.simmental,
               stats: { milk: "7,000 كغ", fat: "4.0%", protein: "3.5%", weight: "700-900 كغ" },
               clinicalProfile: { risks: "عسر ولادة (عجول ضخمة)", resistance: "تأقلم جبلي ممتاز", reproductive: "خصوبة جيدة، توائم شائعة" },
@@ -229,13 +246,21 @@ export const CONTENT: Record<string, TranslationContent> = {
           readMore: "التفاصيل البيئية",
           showLess: "إخفاء التفاصيل",
           subBreedsTitle: "الأنواع الفرعية (Ecotypes)",
+          labels: {
+            color: "اللون",
+            height: "الارتفاع",
+            weight: "الوزن"
+          },
           subBreeds: [
             { 
               name: "الڤالمية (Guelmoise)", 
               region: "الشرق الجبلي", 
               features: "صغيرة، رمادية، متسلقة للجبال.",
+              color: "رمادي داكن",
+              height: "115 سم",
+              weight: "250-300 كغ",
               status: "مهددة بالانقراض",
-              population: "جيوب معزولة في جبال قالمة وسوق أهراس.",
+              population: "جيوب معزولة في جبال قلمة وسوق أهراس.",
               coordinates: [36.4621, 7.4261],
               regionPolygon: [[36.2, 7.2], [36.8, 7.2], [36.8, 8.0], [36.2, 8.0]],
               expandedInfo: {
@@ -248,6 +273,9 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "الشيورفا (Cheurfa)", 
               region: "السهوب", 
               features: "فاتحة اللون، مقاومة للجفاف.",
+              color: "أبيض / رملي",
+              height: "120 سم",
+              weight: "300 كغ",
               status: "هشة",
               population: "تتناقص بسبب التصحر وتغير نمط الرعي.",
               coordinates: [34.6728, 3.2630],
@@ -262,6 +290,9 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "السطايفية (Sétifienne)", 
               region: "سطيف", 
               features: "سوداء، متعددة الأغراض.",
+              color: "أسود / بني داكن",
+              height: "125 سم",
+              weight: "350 كغ",
               status: "في خطر",
               population: "تعاني من التهجين العشوائي المكثف.",
               coordinates: [36.1898, 5.4108],
@@ -273,9 +304,12 @@ export const CONTENT: Record<string, TranslationContent> = {
               }
             },
             { 
-              name: "الشلفية (Chélifienne)", 
+              name: "الشليفية (Chélifienne)", 
               region: "الغرب", 
               features: "بنية محمرة، الأفضل حليباً.",
+              color: "بني محمر / أصفر",
+              height: "128 سم",
+              weight: "380 كغ",
               status: "حرجة جداً",
               population: "شبه منقرضة في حالتها النقية.",
               coordinates: [36.1652, 1.3345],
@@ -330,7 +364,7 @@ export const CONTENT: Record<string, TranslationContent> = {
           title: "تقرير الكفاءة البحثية",
           rank: "الرتبة العلمية:",
           score: "المعدل النهائي:",
-          message: ""
+          message: "أداء ممتاز يدل على استيعاب عميق للمفاهيم."
         }
       }
     }
@@ -431,12 +465,20 @@ export const CONTENT: Record<string, TranslationContent> = {
           description: "Detailed study of the most economically impactful breeds globally.",
           readMore: "Read More",
           showLess: "Show Less",
+          labels: {
+            color: "Color",
+            height: "Height",
+            weight: "Weight",
+            origin: "Origin"
+          },
           breeds: [
             {
               id: "holstein",
               name: "Holstein",
               origin: "Netherlands",
               type: "Dairy (Industrial)",
+              color: "Black & White / Red",
+              height: "145 cm",
               image: IMAGES.holstein,
               stats: { milk: "10,000+ kg", fat: "3.7%", protein: "3.2%", weight: "650 kg" },
               clinicalProfile: { risks: "Mastitis, Lameness, LDA", resistance: "Low heat tolerance", reproductive: "Moderate dystocia risk" },
@@ -453,6 +495,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Montbéliarde",
               origin: "France",
               type: "Dual Purpose",
+              color: "Red Pied",
+              height: "140 cm",
               image: IMAGES.montbeliarde,
               stats: { milk: "7,500 kg", fat: "3.9%", protein: "3.45%", weight: "700 kg" },
               clinicalProfile: { risks: "Low mastitis risk", resistance: "High robustness", reproductive: "Excellent fertility" },
@@ -469,6 +513,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Brahman",
               origin: "USA (Indian origin)",
               type: "Beef (Tropical)",
+              color: "Light Grey / Red",
+              height: "145 cm",
               image: IMAGES.brahman,
               stats: { milk: "Low", fat: "4.5%", protein: "3.6%", weight: "500-800 kg" },
               clinicalProfile: { risks: "Low disease risk", resistance: "Ticks & Heat", reproductive: "Late maturity" },
@@ -485,6 +531,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Jersey",
               origin: "Jersey Island (UK)",
               type: "Dairy (High Solids)",
+              color: "Fawn",
+              height: "125 cm",
               image: IMAGES.jersey,
               stats: { milk: "6,000 kg", fat: "5.4%", protein: "3.9%", weight: "450 kg" },
               clinicalProfile: { risks: "Hypocalcemia (Milk Fever)", resistance: "Heat tolerant, strong hooves", reproductive: "Excellent calving ease" },
@@ -501,6 +549,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Angus",
               origin: "Scotland",
               type: "Beef (Premium)",
+              color: "Black / Red",
+              height: "135 cm",
               image: IMAGES.angus,
               stats: { milk: "Low", fat: "High (Marbled)", protein: "Muscular", weight: "800-1000 kg" },
               clinicalProfile: { risks: "Genetic defects (AM)", resistance: "Cold hardy, Polled", reproductive: "Early maturity" },
@@ -517,6 +567,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Simmental",
               origin: "Switzerland",
               type: "Dual Purpose",
+              color: "Straw & Red",
+              height: "145 cm",
               image: IMAGES.simmental,
               stats: { milk: "7,000 kg", fat: "4.0%", protein: "3.5%", weight: "700-900 kg" },
               clinicalProfile: { risks: "Dystocia (heavy calves)", resistance: "Alpine adaptation", reproductive: "Good fertility, Twinning" },
@@ -552,11 +604,19 @@ export const CONTENT: Record<string, TranslationContent> = {
           readMore: "Environmental Details",
           showLess: "Show Less",
           subBreedsTitle: "Ecotypes (Sub-breeds)",
+          labels: {
+            color: "Color",
+            height: "Height",
+            weight: "Weight"
+          },
           subBreeds: [
             { 
               name: "Guelmoise", 
               region: "Eastern Mountains", 
               features: "Small, grey, climber.",
+              color: "Dark Grey",
+              height: "115 cm",
+              weight: "250-300 kg",
               status: "Endangered",
               population: "Isolated pockets in Guelma & Souk Ahras.",
               coordinates: [36.4621, 7.4261],
@@ -571,6 +631,9 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Cheurfa", 
               region: "Steppe", 
               features: "Light color, drought resistant.",
+              color: "White / Sandy",
+              height: "120 cm",
+              weight: "300 kg",
               status: "Vulnerable",
               population: "Declining due to desertification.",
               coordinates: [34.6728, 3.2630],
@@ -585,6 +648,9 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Sétifienne", 
               region: "Sétif", 
               features: "Blackish, dual purpose.",
+              color: "Black / Dark Brown",
+              height: "125 cm",
+              weight: "350 kg",
               status: "At Risk",
               population: "Heavily crossed with imported breeds.",
               coordinates: [36.1898, 5.4108],
@@ -599,6 +665,9 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Chélifienne", 
               region: "West", 
               features: "Reddish, best milker.",
+              color: "Reddish / Fawn",
+              height: "128 cm",
+              weight: "380 kg",
               status: "Critical",
               population: "Near extinction in pure form.",
               coordinates: [36.1652, 1.3345],
@@ -754,12 +823,20 @@ export const CONTENT: Record<string, TranslationContent> = {
           description: "Étude détaillée des races ayant le plus d'impact économique au niveau mondial.",
           readMore: "Lire la suite",
           showLess: "Masquer",
+          labels: {
+            color: "Couleur",
+            height: "Hauteur",
+            weight: "Poids",
+            origin: "Origine"
+          },
           breeds: [
             {
               id: "holstein",
               name: "Holstein",
               origin: "Pays-Bas",
               type: "Laitière (Industrielle)",
+              color: "Pie Noire / Rouge",
+              height: "145 cm",
               image: IMAGES.holstein,
               stats: { milk: "10 000+ kg", fat: "3.7%", protein: "3.2%", weight: "650 kg" },
               clinicalProfile: { risks: "Mammite, Boiterie, Déplacement de la caillette", resistance: "Faible tolérance à la chaleur", reproductive: "Risque de dystocie modéré" },
@@ -776,6 +853,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Montbéliarde",
               origin: "France",
               type: "Mixte",
+              color: "Pie Rouge",
+              height: "140 cm",
               image: IMAGES.montbeliarde,
               stats: { milk: "7 500 kg", fat: "3.9%", protein: "3.45%", weight: "700 kg" },
               clinicalProfile: { risks: "Faible risque de mammite", resistance: "Grande robustesse", reproductive: "Excellente fertilité" },
@@ -792,6 +871,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Brahman",
               origin: "USA (Origine indienne)",
               type: "Viande (Tropicale)",
+              color: "Gris / Rouge",
+              height: "145 cm",
               image: IMAGES.brahman,
               stats: { milk: "Faible", fat: "4.5%", protein: "3.6%", weight: "500-800 kg" },
               clinicalProfile: { risks: "Faible risque de maladie", resistance: "Tiques & Chaleur", reproductive: "Maturité tardive" },
@@ -808,6 +889,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Jersey",
               origin: "Île de Jersey (RU)",
               type: "Laitière (Taux élevés)",
+              color: "Fauve",
+              height: "125 cm",
               image: IMAGES.jersey,
               stats: { milk: "6 000 kg", fat: "5.4%", protein: "3.9%", weight: "450 kg" },
               clinicalProfile: { risks: "Fièvre de lait (Hypocalcémie)", resistance: "Tolérance à la chaleur, Sabots durs", reproductive: "Facilité de vêlage" },
@@ -824,6 +907,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Angus",
               origin: "Écosse",
               type: "Bouchère (Premium)",
+              color: "Noire / Rouge",
+              height: "135 cm",
               image: IMAGES.angus,
               stats: { milk: "Faible", fat: "Élevé (Persillé)", protein: "Musculaire", weight: "800-1000 kg" },
               clinicalProfile: { risks: "Défauts génétiques (AM)", resistance: "Rustique au froid, Sans cornes", reproductive: "Maturité précoce" },
@@ -840,6 +925,8 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Simmental",
               origin: "Suisse",
               type: "Mixte (Lait & Viande)",
+              color: "Pie Rouge (Paille)",
+              height: "145 cm",
               image: IMAGES.simmental,
               stats: { milk: "7 000 kg", fat: "4.0%", protein: "3.5%", weight: "700-900 kg" },
               clinicalProfile: { risks: "Dystocie (veaux lourds)", resistance: "Adaptation alpine", reproductive: "Bonne fertilité, Jumeaux fréquents" },
@@ -875,11 +962,19 @@ export const CONTENT: Record<string, TranslationContent> = {
           readMore: "Détails Environnementaux",
           showLess: "Masquer",
           subBreedsTitle: "Écotypes (Sous-races)",
+          labels: {
+            color: "Couleur",
+            height: "Hauteur",
+            weight: "Poids"
+          },
           subBreeds: [
             { 
               name: "Guelmoise", 
               region: "Montagnes de l'Est", 
               features: "Petite, grise, grimpeuse.",
+              color: "Gris foncé",
+              height: "115 cm",
+              weight: "250-300 kg",
               status: "En Danger",
               population: "Poches isolées à Guelma et Souk Ahras.",
               coordinates: [36.4621, 7.4261],
@@ -894,6 +989,9 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Cheurfa", 
               region: "Steppe", 
               features: "Claire, résistante à la sécheresse.",
+              color: "Blanche / Sable",
+              height: "120 cm",
+              weight: "300 kg",
               status: "Vulnérable",
               population: "En déclin dû à la désertification.",
               coordinates: [34.6728, 3.2630],
@@ -908,6 +1006,9 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Sétifienne", 
               region: "Sétif", 
               features: "Noirâtre, mixte.",
+              color: "Noire / Brun foncé",
+              height: "125 cm",
+              weight: "350 kg",
               status: "À Risque",
               population: "Fortement croisée avec races importées.",
               coordinates: [36.1898, 5.4108],
@@ -922,6 +1023,9 @@ export const CONTENT: Record<string, TranslationContent> = {
               name: "Chélifienne", 
               region: "Ouest", 
               features: "Rougeâtre, meilleure laitière.",
+              color: "Rougeâtre / Fauve",
+              height: "128 cm",
+              weight: "380 kg",
               status: "Critique",
               population: "Quasi-éteinte à l'état pur.",
               coordinates: [36.1652, 1.3345],
@@ -982,3 +1086,5 @@ export const CONTENT: Record<string, TranslationContent> = {
     }
   }
 };
+
+

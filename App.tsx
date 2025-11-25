@@ -9,7 +9,7 @@ import PronunciationBtn from './components/PronunciationBtn';
 import { Lock, Award, BookOpen, Activity, Map, Microscope, ChevronLeft, CheckSquare, Square, Globe, Book, X, ArrowDown, ArrowUp } from 'lucide-react';
 import { BreedDetail, Language, ComparisonDataPoint } from './types';
 
-const BreedCard: React.FC<{ breed: BreedDetail; readMoreLabel: string; showLessLabel: string; lang: Language }> = ({ breed, readMoreLabel, showLessLabel, lang }) => {
+const BreedCard: React.FC<{ breed: BreedDetail; labels: any; readMoreLabel: string; showLessLabel: string; lang: Language }> = ({ breed, labels, readMoreLabel, showLessLabel, lang }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -31,8 +31,24 @@ const BreedCard: React.FC<{ breed: BreedDetail; readMoreLabel: string; showLessL
                <h4 className="text-2xl font-heading font-bold text-academic-accent">{breed.name}</h4>
                <PronunciationBtn text={breed.name} lang={lang} />
              </div>
-             <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">{breed.origin}</p>
+             <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">{labels.origin}: {breed.origin}</p>
           </div>
+        </div>
+        
+        {/* Morphology Grid */}
+        <div className="grid grid-cols-2 gap-2 mb-4 text-xs">
+           <div className="bg-white/5 p-2 rounded">
+             <span className="text-slate-400 block">{labels.color}</span>
+             <span className="text-slate-200 font-bold">{breed.color}</span>
+           </div>
+           <div className="bg-white/5 p-2 rounded">
+             <span className="text-slate-400 block">{labels.height}</span>
+             <span className="text-slate-200 font-bold">{breed.height}</span>
+           </div>
+           <div className="bg-white/5 p-2 rounded">
+             <span className="text-slate-400 block">{labels.weight}</span>
+             <span className="text-slate-200 font-bold">{breed.stats.weight}</span>
+           </div>
         </div>
         
         {/* Stats Grid */}
@@ -99,7 +115,7 @@ const BreedCard: React.FC<{ breed: BreedDetail; readMoreLabel: string; showLessL
   );
 };
 
-const SubBreedCard: React.FC<{ sb: any; isSelected: boolean; onClick: () => void; lang: Language }> = ({ sb, isSelected, onClick, lang }) => {
+const SubBreedCard: React.FC<{ sb: any; labels: any; isSelected: boolean; onClick: () => void; lang: Language }> = ({ sb, labels, isSelected, onClick, lang }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -128,10 +144,27 @@ const SubBreedCard: React.FC<{ sb: any; isSelected: boolean; onClick: () => void
             {sb.status}
           </span>
        </div>
+       
        <p className="text-slate-400 text-sm leading-relaxed mb-4">{sb.features}</p>
        
+       {/* Morphology Grid */}
+       <div className="grid grid-cols-3 gap-2 mb-4 text-[10px] border-t border-b border-white/5 py-2">
+          <div className="text-center">
+             <span className="text-slate-500 block mb-1">{labels.color}</span>
+             <span className="text-slate-300 font-bold">{sb.color}</span>
+          </div>
+          <div className="text-center border-l border-r border-white/5">
+             <span className="text-slate-500 block mb-1">{labels.height}</span>
+             <span className="text-slate-300 font-bold">{sb.height}</span>
+          </div>
+          <div className="text-center">
+             <span className="text-slate-500 block mb-1">{labels.weight}</span>
+             <span className="text-slate-300 font-bold">{sb.weight}</span>
+          </div>
+       </div>
+
        {/* Population Info */}
-       <p className="text-xs text-slate-500 border-t border-white/5 pt-2 mt-2 mb-4">
+       <p className="text-xs text-slate-500 mt-2 mb-4">
           <span className="font-bold text-slate-400">Population:</span> {sb.population}
        </p>
 
@@ -433,6 +466,7 @@ const App: React.FC = () => {
                         <BreedCard 
                           key={breed.id} 
                           breed={breed} 
+                          labels={t.sections.global.content.labels}
                           readMoreLabel={t.sections.global.content.readMore} 
                           showLessLabel={t.sections.global.content.showLess}
                           lang={lang}
@@ -518,6 +552,7 @@ const App: React.FC = () => {
                            <SubBreedCard
                              key={i}
                              sb={sb}
+                             labels={t.sections.algeria.content.labels}
                              isSelected={selectedMapRegion === i}
                              onClick={() => handleMapSelect(i)}
                              lang={lang}
