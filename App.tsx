@@ -1,5 +1,5 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend } from 'recharts';
 import { CONTENT, IMAGES } from './constants';
 import Quiz from './components/Quiz';
@@ -7,14 +7,14 @@ import AlgeriaMap from './components/AlgeriaMap';
 import ImageWithSkeleton from './components/ImageWithSkeleton';
 import PronunciationBtn from './components/PronunciationBtn';
 import ImageZoomModal from './components/ImageZoomModal';
-import { Lock, Award, BookOpen, Activity, Map, Microscope, ChevronLeft, CheckSquare, Square, Globe, Book, X, ArrowDown, ArrowUp, ZoomIn } from 'lucide-react';
+import { Lock, Award, BookOpen, Activity, Map, Microscope, ChevronLeft, CheckSquare, Square, Globe, Book, X, ArrowDown, ArrowUp, ZoomIn, Menu } from 'lucide-react';
 import { BreedDetail, Language, ComparisonDataPoint } from './types';
 
 const BreedCard: React.FC<{ breed: BreedDetail; labels: any; readMoreLabel: string; showLessLabel: string; lang: Language; onZoom: (breed: BreedDetail) => void }> = ({ breed, labels, readMoreLabel, showLessLabel, lang, onZoom }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="glass-card rounded-xl overflow-hidden group border-b-4 border-academic-primary hover:border-academic-accent flex flex-col h-full">
+    <div className="glass-card rounded-xl overflow-hidden group border-b-4 border-academic-primary hover:border-academic-accent flex flex-col h-full w-full">
       <div className="relative h-56 cursor-zoom-in" onClick={() => onZoom(breed)}>
         <ImageWithSkeleton 
           src={breed.image} 
@@ -35,8 +35,8 @@ const BreedCard: React.FC<{ breed: BreedDetail; labels: any; readMoreLabel: stri
       <div className="p-6 flex-1 flex flex-col">
         <div className="flex justify-between items-start mb-4">
           <div>
-             <div className="flex items-center gap-2">
-               <h4 className="text-2xl font-heading font-bold text-academic-accent">{breed.name}</h4>
+             <div className="flex items-center gap-2 flex-wrap">
+               <h4 className="text-xl md:text-2xl font-heading font-bold text-academic-accent">{breed.name}</h4>
                <PronunciationBtn text={breed.name} lang={lang} />
              </div>
              <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">{labels.origin}: {breed.origin}</p>
@@ -53,7 +53,7 @@ const BreedCard: React.FC<{ breed: BreedDetail; labels: any; readMoreLabel: stri
              <span className="text-slate-400 block">{labels.height}</span>
              <span className="text-slate-200 font-bold">{breed.height}</span>
            </div>
-           <div className="bg-white/5 p-2 rounded">
+           <div className="bg-white/5 p-2 rounded col-span-2">
              <span className="text-slate-400 block">{labels.weight}</span>
              <span className="text-slate-200 font-bold">{breed.stats.weight}</span>
            </div>
@@ -63,11 +63,11 @@ const BreedCard: React.FC<{ breed: BreedDetail; labels: any; readMoreLabel: stri
         <div className="grid grid-cols-2 gap-2 mb-6">
           <div className="bg-black/30 p-3 rounded-lg border border-white/5">
              <span className="text-slate-400 text-xs block mb-1">Milk Yield</span>
-             <span className="text-white font-bold font-mono">{breed.stats.milk}</span>
+             <span className="text-white font-bold font-mono text-sm">{breed.stats.milk}</span>
           </div>
           <div className="bg-black/30 p-3 rounded-lg border border-white/5">
              <span className="text-slate-400 text-xs block mb-1">Fat %</span>
-             <span className="text-academic-accent font-bold font-mono">{breed.stats.fat}</span>
+             <span className="text-academic-accent font-bold font-mono text-sm">{breed.stats.fat}</span>
           </div>
         </div>
 
@@ -129,13 +129,13 @@ const SubBreedCard: React.FC<{ sb: any; labels: any; isSelected: boolean; onClic
   return (
     <div 
       onClick={onClick}
-      className={`glass-card p-8 rounded-2xl border transition-all duration-500 cursor-pointer
+      className={`glass-card p-6 md:p-8 rounded-2xl border transition-all duration-500 cursor-pointer w-full
         ${isSelected 
-          ? 'border-academic-accent bg-academic-accent/10 transform scale-105 shadow-[0_0_30px_rgba(245,158,11,0.2)]' 
+          ? 'border-academic-accent bg-academic-accent/10 transform md:scale-105 shadow-[0_0_30px_rgba(245,158,11,0.2)]' 
           : 'border-white/5 hover:border-academic-accent/50'}`
       }
     >
-       <div className="flex justify-between items-start mb-3">
+       <div className="flex flex-col md:flex-row justify-between items-start mb-3 gap-2">
           <div className="flex items-center gap-2">
             <h4 className="text-xl font-bold text-white">{sb.name}</h4>
             <PronunciationBtn text={sb.name} lang={lang} />
@@ -234,6 +234,7 @@ const App: React.FC = () => {
   const t = CONTENT[lang];
   
   const [activeTab, setActiveTab] = useState('cover');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [unlocked, setUnlocked] = useState({
     intro: false,
     global: false,
@@ -259,6 +260,12 @@ const App: React.FC = () => {
   // Sorting State
   const [sortConfig, setSortConfig] = useState<{ key: keyof ComparisonDataPoint | null, direction: 'asc' | 'desc' }>({ key: null, direction: 'asc' });
 
+  // Reset scroll when tab changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setMobileMenuOpen(false);
+  }, [activeTab]);
+
   const toggleBreed = (id: string) => {
     setSelectedBreeds(prev => 
       prev.includes(id) ? prev.filter(b => b !== id) : [...prev, id].slice(0, 3) 
@@ -282,7 +289,12 @@ const App: React.FC = () => {
 
   const NavItem = ({ id, label, icon: Icon, isLocked }: any) => (
     <button
-      onClick={() => !isLocked && setActiveTab(id)}
+      onClick={() => {
+        if (!isLocked) {
+          setActiveTab(id);
+          setMobileMenuOpen(false);
+        }
+      }}
       disabled={isLocked}
       className={`flex items-center gap-4 px-6 py-5 w-full transition-all duration-300 border-r-4 group
         ${activeTab === id 
@@ -331,8 +343,32 @@ const App: React.FC = () => {
         />
       )}
       
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="w-80 bg-[#020617] border-l border-white/5 flex flex-col fixed h-full z-30 hidden md:flex shadow-[5px_0_30px_rgba(0,0,0,0.5)]">
+      <aside className={`
+        fixed top-0 bottom-0 z-50 w-80 bg-[#020617] border-l-0 md:border-l border-white/5 
+        flex flex-col shadow-[5px_0_30px_rgba(0,0,0,0.5)] transition-transform duration-300 ease-in-out
+        ${mobileMenuOpen 
+          ? 'translate-x-0' 
+          : (t.direction === 'rtl' ? 'translate-x-full md:translate-x-0' : '-translate-x-full md:translate-x-0')
+        }
+        ${t.direction === 'rtl' ? 'right-0 md:right-0' : 'left-0 md:left-0'}
+      `}>
+        {/* Mobile Close Button */}
+        <button 
+          onClick={() => setMobileMenuOpen(false)}
+          className="absolute top-4 right-4 md:hidden text-slate-400 hover:text-white"
+        >
+          <X size={24} />
+        </button>
+
         <div className="p-8 text-center bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-opacity-5">
           <div className="w-24 h-24 mx-auto bg-gradient-to-br from-slate-800 to-slate-900 rounded-full flex items-center justify-center mb-6 border-2 border-academic-primary/50 shadow-lg shadow-blue-900/20">
              <Microscope size={48} className="text-academic-accent" />
@@ -372,17 +408,21 @@ const App: React.FC = () => {
       </aside>
 
       {/* Mobile Header */}
-      <div className="md:hidden fixed top-0 w-full bg-academic-dark z-50 p-4 flex justify-between items-center border-b border-white/10 shadow-lg">
-         <h1 className="font-bold text-white truncate pr-4">{t.header.title}</h1>
+      <div className="md:hidden fixed top-0 w-full bg-academic-dark/95 backdrop-blur-md z-30 p-4 flex justify-between items-center border-b border-white/10 shadow-lg h-[60px]">
+         <div className="flex items-center gap-3">
+           <button onClick={() => setMobileMenuOpen(true)} className="text-white hover:text-academic-primary transition-colors">
+             <Menu size={24} />
+           </button>
+           <h1 className="font-bold text-white truncate max-w-[200px] text-sm sm:text-base">{t.header.title}</h1>
+         </div>
          <div className="flex items-center gap-2">
             <button onClick={() => setShowGlossary(true)} className="p-2 bg-slate-800 rounded border border-slate-600"><Book size={16} /></button>
-            <button onClick={() => setLang(lang === 'ar' ? 'fr' : 'ar')} className="text-xs bg-slate-800 px-2 py-1 rounded border border-slate-600">{lang.toUpperCase()}</button>
-            <div className="text-xs bg-academic-primary px-2 py-1 rounded font-bold">{activeTab}</div>
+            <button onClick={() => setLang(lang === 'ar' ? 'fr' : 'ar')} className="text-xs bg-slate-800 px-2 py-1 rounded border border-slate-600 font-bold">{lang.toUpperCase()}</button>
          </div>
       </div>
 
       {/* Content Area */}
-      <main className={`flex-1 ${t.direction === 'rtl' ? 'md:mr-80' : 'md:ml-80'} p-4 md:p-12 overflow-y-auto`}>
+      <main className={`flex-1 ${t.direction === 'rtl' ? 'md:mr-80' : 'md:ml-80'} p-4 md:p-12 overflow-y-auto w-full pt-[80px] md:pt-12`}>
         {/* Desktop Glossary Trigger */}
         <div className="hidden md:flex justify-end mb-6">
            <button onClick={() => setShowGlossary(true)} className="flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-academic-accent transition-colors bg-white/5 px-4 py-2 rounded-full border border-white/10">
@@ -397,21 +437,21 @@ const App: React.FC = () => {
                <img 
                  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/University_of_Laghouat_logo.jpg/250px-University_of_Laghouat_logo.jpg" 
                  alt="University Logo" 
-                 className="w-40 h-40 mx-auto relative z-10 drop-shadow-2xl rounded-full border-4 border-white/10" 
+                 className="w-32 h-32 md:w-40 md:h-40 mx-auto relative z-10 drop-shadow-2xl rounded-full border-4 border-white/10" 
                />
              </div>
 
-             <div className="space-y-1 mb-10 text-slate-400 font-heading text-sm tracking-wide uppercase">
+             <div className="space-y-1 mb-10 text-slate-400 font-heading text-xs md:text-sm tracking-wide uppercase px-4">
                {t.universityHeader.map((line, i) => <p key={i}>{line}</p>)}
              </div>
              
-             <h1 className="text-4xl md:text-7xl font-heading font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-100 to-slate-400 mb-10 max-w-5xl leading-tight drop-shadow-lg">
+             <h1 className="text-3xl md:text-6xl font-heading font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-100 to-slate-400 mb-10 max-w-5xl leading-tight drop-shadow-lg px-2">
                {t.sections.cover.title}
              </h1>
 
-             <div className="glass-panel px-16 py-10 rounded-3xl mb-12 border-t border-white/10 shadow-2xl max-w-2xl w-full transform hover:scale-105 transition-transform duration-500">
+             <div className="glass-panel px-8 py-8 md:px-16 md:py-10 rounded-3xl mb-12 border-t border-white/10 shadow-2xl max-w-2xl w-full transform md:hover:scale-105 transition-transform duration-500">
                 <p className="text-academic-accent font-bold mb-6 text-sm uppercase tracking-widest">{t.sections.cover.preparedBy}</p>
-                <div className="flex flex-col gap-4 justify-center text-2xl md:text-3xl font-heading font-bold text-white mb-8">
+                <div className="flex flex-col gap-4 justify-center text-xl md:text-3xl font-heading font-bold text-white mb-8">
                   {t.sections.cover.students.map(s => <span key={s} className="border-b-2 border-white/10 pb-2 inline-block">{s}</span>)}
                 </div>
                 <p className="text-slate-400 text-sm">{t.sections.cover.year}</p>
@@ -419,7 +459,7 @@ const App: React.FC = () => {
 
              <button 
                onClick={() => setActiveTab('intro')}
-               className="group px-10 py-5 bg-gradient-to-r from-academic-primary to-blue-700 hover:to-blue-600 text-white rounded-full font-bold text-xl transition-all shadow-[0_10px_40px_-10px_rgba(59,130,246,0.6)] hover:shadow-[0_20px_60px_-10px_rgba(59,130,246,0.8)] hover:-translate-y-1 flex items-center gap-4 ring-4 ring-blue-900/30"
+               className="group px-8 py-4 md:px-10 md:py-5 bg-gradient-to-r from-academic-primary to-blue-700 hover:to-blue-600 text-white rounded-full font-bold text-lg md:text-xl transition-all shadow-[0_10px_40px_-10px_rgba(59,130,246,0.6)] hover:shadow-[0_20px_60px_-10px_rgba(59,130,246,0.8)] hover:-translate-y-1 flex items-center gap-4 ring-4 ring-blue-900/30"
              >
                {t.sections.cover.cta}
                {t.direction === 'rtl' ? <ChevronLeft className="group-hover:-translate-x-2 transition-transform" /> : <ChevronLeft className="rotate-180 group-hover:translate-x-2 transition-transform" />}
@@ -430,8 +470,8 @@ const App: React.FC = () => {
         {activeTab === 'intro' && (
           <div className="max-w-5xl mx-auto animate-fade-in">
              <div className="mb-12">
-                <h2 className="text-5xl font-heading font-bold text-white mb-4">{t.sections.intro.title}</h2>
-                <p className="text-2xl text-academic-accent font-light">{t.sections.intro.subtitle}</p>
+                <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">{t.sections.intro.title}</h2>
+                <p className="text-xl md:text-2xl text-academic-accent font-light">{t.sections.intro.subtitle}</p>
              </div>
 
              {!unlocked.intro ? (
@@ -442,17 +482,17 @@ const App: React.FC = () => {
                />
              ) : (
                <div className="animate-slide-up space-y-12">
-                  <div className="glass-panel p-10 rounded-3xl border border-white/10 relative overflow-hidden">
+                  <div className="glass-panel p-6 md:p-10 rounded-3xl border border-white/10 relative overflow-hidden">
                      <div className="absolute top-0 right-0 w-64 h-64 bg-academic-primary/10 rounded-full blur-3xl -z-10"></div>
-                     <h3 className="text-3xl font-bold text-white mb-6">{t.sections.intro.content.title}</h3>
-                     <p className="text-lg text-slate-300 leading-loose">{t.sections.intro.content.text}</p>
+                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">{t.sections.intro.content.title}</h3>
+                     <p className="text-base md:text-lg text-slate-300 leading-loose">{t.sections.intro.content.text}</p>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-8">
                      {t.sections.intro.content.cards.map((card, i) => (
                        <div key={i} className="glass-card p-8 rounded-2xl border-t-4 border-academic-accent hover:bg-white/5 transition-colors group">
                           <div className="w-16 h-16 bg-slate-800 rounded-xl flex items-center justify-center text-3xl font-bold text-academic-primary mb-6 group-hover:scale-110 transition-transform">{card.icon}</div>
-                          <h4 className="text-2xl font-heading font-bold text-white mb-3">{card.title}</h4>
+                          <h4 className="text-xl md:text-2xl font-heading font-bold text-white mb-3">{card.title}</h4>
                           <p className="text-slate-400 leading-relaxed">{card.desc}</p>
                        </div>
                      ))}
@@ -471,8 +511,8 @@ const App: React.FC = () => {
         {activeTab === 'global' && (
           <div className="max-w-7xl mx-auto animate-fade-in">
              <div className="mb-12 border-b border-white/10 pb-8">
-                <h2 className="text-5xl font-heading font-bold text-white mb-4">{t.sections.global.title}</h2>
-                <p className="text-2xl text-academic-accent font-light">{t.sections.global.subtitle}</p>
+                <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">{t.sections.global.title}</h2>
+                <p className="text-xl md:text-2xl text-academic-accent font-light">{t.sections.global.subtitle}</p>
              </div>
 
              {!unlocked.global ? (
@@ -483,7 +523,7 @@ const App: React.FC = () => {
                 />
              ) : (
                 <div className="animate-slide-up space-y-16">
-                   <div className="grid md:grid-cols-3 gap-8">
+                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                       {t.sections.global.content.breeds.map(breed => (
                         <BreedCard 
                           key={breed.id} 
@@ -510,8 +550,8 @@ const App: React.FC = () => {
         {activeTab === 'algeria' && (
           <div className="max-w-6xl mx-auto animate-fade-in">
             <div className="mb-12">
-                <h2 className="text-5xl font-heading font-bold text-white mb-4">{t.sections.algeria.title}</h2>
-                <p className="text-2xl text-academic-accent font-light">{t.sections.algeria.subtitle}</p>
+                <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">{t.sections.algeria.title}</h2>
+                <p className="text-xl md:text-2xl text-academic-accent font-light">{t.sections.algeria.subtitle}</p>
              </div>
 
             {!unlocked.algeria ? (
@@ -526,13 +566,13 @@ const App: React.FC = () => {
                   <div className="glass-panel rounded-[2rem] overflow-hidden relative border-0 shadow-2xl group">
                      <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent z-10"></div>
                      <ImageWithSkeleton src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Vache_de_l%27Atlas.jpg/1280px-Vache_de_l%27Atlas.jpg" alt="Brown Atlas" className="absolute w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-[2s]" />
-                     <div className="relative z-20 p-12 md:p-20 max-w-3xl">
+                     <div className="relative z-20 p-6 md:p-12 lg:p-20 max-w-3xl">
                         <div className="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded mb-4">ENDANGERED</div>
-                        <h3 className="text-5xl font-heading font-extrabold text-academic-accent mb-6 drop-shadow-lg">{t.sections.algeria.content.title}</h3>
-                        <p className="text-xl text-slate-100 leading-relaxed font-light border-l-4 border-academic-primary pl-6">{t.sections.algeria.content.description}</p>
+                        <h3 className="text-3xl md:text-5xl font-heading font-extrabold text-academic-accent mb-6 drop-shadow-lg">{t.sections.algeria.content.title}</h3>
+                        <p className="text-lg md:text-xl text-slate-100 leading-relaxed font-light border-l-4 border-academic-primary pl-6">{t.sections.algeria.content.description}</p>
                         
                         <div className={`overflow-hidden transition-all duration-700 ${isHeroExpanded ? 'max-h-[600px] opacity-100 mt-6' : 'max-h-0 opacity-0'}`}>
-                           <div className="bg-black/40 p-6 rounded-xl border border-white/10 text-lg leading-relaxed text-slate-200">
+                           <div className="bg-black/40 p-6 rounded-xl border border-white/10 text-base md:text-lg leading-relaxed text-slate-200">
                               {t.sections.algeria.content.heroExpandedText}
                            </div>
                         </div>
@@ -550,14 +590,14 @@ const App: React.FC = () => {
 
                   {/* Interactive Map & Sub Breeds Grid */}
                   <div>
-                    <h3 className="text-3xl font-heading font-bold text-white mb-8 flex items-center gap-3">
+                    <h3 className="text-2xl md:text-3xl font-heading font-bold text-white mb-8 flex items-center gap-3">
                       <Map className="text-academic-primary" />
                       {t.sections.algeria.content.subBreedsTitle}
                     </h3>
 
                     {/* Map Integration */}
-                    <div className="grid md:grid-cols-3 gap-8 mb-12">
-                       <div className="md:col-span-1 h-full">
+                    <div className="grid lg:grid-cols-3 gap-8 mb-12">
+                       <div className="lg:col-span-1 h-full min-h-[300px]">
                           <AlgeriaMap 
                             locations={t.sections.algeria.content.subBreeds.map((sb, i) => ({
                               name: sb.name,
@@ -570,7 +610,7 @@ const App: React.FC = () => {
                             selectedIndex={selectedMapRegion}
                           />
                        </div>
-                       <div className="md:col-span-2 grid sm:grid-cols-2 gap-6">
+                       <div className="lg:col-span-2 grid sm:grid-cols-2 gap-6">
                          {t.sections.algeria.content.subBreeds.map((sb, i) => (
                            <SubBreedCard
                              key={i}
@@ -589,11 +629,11 @@ const App: React.FC = () => {
                   </div>
 
                   {/* Conservation */}
-                  <div className="bg-gradient-to-br from-orange-900/30 to-slate-900 border border-orange-500/30 p-10 rounded-3xl">
-                     <h4 className="text-orange-400 font-bold text-2xl mb-4 flex items-center gap-3">
+                  <div className="bg-gradient-to-br from-orange-900/30 to-slate-900 border border-orange-500/30 p-6 md:p-10 rounded-3xl">
+                     <h4 className="text-orange-400 font-bold text-xl md:text-2xl mb-4 flex items-center gap-3">
                         <Lock size={28} /> {t.sections.algeria.content.conservation.title}
                      </h4>
-                     <p className="text-orange-100/80 text-lg leading-relaxed">{t.sections.algeria.content.conservation.text}</p>
+                     <p className="text-orange-100/80 text-base md:text-lg leading-relaxed">{t.sections.algeria.content.conservation.text}</p>
                   </div>
                   
                   <div className="flex justify-center pt-8">
@@ -608,8 +648,8 @@ const App: React.FC = () => {
 
         {activeTab === 'compare' && (
            <div className="max-w-7xl mx-auto animate-fade-in">
-              <h2 className="text-4xl font-heading font-bold text-white mb-2">{t.sections.compare.title}</h2>
-              <p className="text-xl text-academic-primary mb-12">{t.sections.compare.subtitle}</p>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-2">{t.sections.compare.title}</h2>
+              <p className="text-lg md:text-xl text-academic-primary mb-12">{t.sections.compare.subtitle}</p>
               
               <div className="grid lg:grid-cols-[300px_1fr] gap-8">
                  {/* Controls */}
@@ -631,18 +671,18 @@ const App: React.FC = () => {
                  </div>
 
                  {/* Charts Area */}
-                 <div className="space-y-8">
-                    <div className="glass-panel p-8 rounded-2xl">
+                 <div className="space-y-8 min-w-0">
+                    <div className="glass-panel p-4 md:p-8 rounded-2xl">
                        <h3 className="text-xl font-bold text-white mb-6">{t.sections.compare.labels.adaptation} vs {t.sections.compare.labels.cost}</h3>
-                       <div className="h-80 w-full">
+                       <div className="h-64 md:h-80 w-full">
                           <ResponsiveContainer>
-                             <RadarChart outerRadius={90} data={[
+                             <RadarChart outerRadius={window.innerWidth < 768 ? 60 : 90} data={[
                                 { subject: t.sections.compare.labels.milk, ...Object.fromEntries(filteredComparisonData.map(d => [d.name, d.milkIndex])), fullMark: 100 },
                                 { subject: t.sections.compare.labels.adaptation, ...Object.fromEntries(filteredComparisonData.map(d => [d.name, d.adaptationIndex])), fullMark: 100 },
                                 { subject: t.sections.compare.labels.cost, ...Object.fromEntries(filteredComparisonData.map(d => [d.name, d.maintenanceCost])), fullMark: 100 },
                              ]}>
                                 <PolarGrid stroke="rgba(255,255,255,0.1)" />
-                                <PolarAngleAxis dataKey="subject" tick={{ fill: '#e2e8f0', fontSize: 14, fontWeight: 'bold' }} />
+                                <PolarAngleAxis dataKey="subject" tick={{ fill: '#e2e8f0', fontSize: window.innerWidth < 768 ? 10 : 14, fontWeight: 'bold' }} />
                                 <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
                                 {filteredComparisonData.map((d, i) => (
                                    <Radar 
@@ -678,8 +718,8 @@ const App: React.FC = () => {
                        </div>
                     </div>
 
-                    <div className="glass-panel p-8 rounded-2xl overflow-x-auto">
-                       <table className="w-full text-right">
+                    <div className="glass-panel p-4 md:p-8 rounded-2xl overflow-x-auto">
+                       <table className="w-full text-right min-w-[600px]">
                           <thead>
                              <tr className="text-slate-400 border-b border-white/10">
                                 <th className="pb-4 px-4 font-heading text-left">{t.sections.compare.labels.tableHeader[0]}</th>
@@ -737,7 +777,7 @@ const App: React.FC = () => {
            <div className="max-w-3xl mx-auto animate-fade-in">
               {!unlocked.conclusion ? (
                  <div>
-                    <h2 className="text-4xl font-heading font-bold text-white mb-8 text-center">{t.sections.conclusion.title}</h2>
+                    <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-8 text-center">{t.sections.conclusion.title}</h2>
                     <Quiz 
                       data={t.sections.conclusion.quiz}
                       onComplete={() => setUnlocked(p => ({...p, conclusion: true}))}
@@ -745,14 +785,14 @@ const App: React.FC = () => {
                     />
                  </div>
               ) : (
-                 <div className="glass-panel p-12 rounded-[2.5rem] text-center border border-academic-accent/30 shadow-[0_0_100px_-20px_rgba(245,158,11,0.3)] animate-slide-up relative overflow-hidden">
+                 <div className="glass-panel p-8 md:p-12 rounded-[2.5rem] text-center border border-academic-accent/30 shadow-[0_0_100px_-20px_rgba(245,158,11,0.3)] animate-slide-up relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-academic-accent to-transparent"></div>
                     <Award size={80} className="mx-auto text-academic-accent mb-8 animate-pulse-slow drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]" />
-                    <h2 className="text-4xl font-heading font-bold text-white mb-4">{t.sections.conclusion.report.title}</h2>
+                    <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">{t.sections.conclusion.report.title}</h2>
                     <p className="text-slate-400 mb-10 uppercase tracking-widest text-sm">Official Assessment Record</p>
                     
                     <div className="inline-block p-8 rounded-full bg-slate-900 border-4 border-academic-primary/30 mb-8">
-                       <div className="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-academic-accent to-yellow-200">
+                       <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-academic-accent to-yellow-200">
                           {totalScore} <span className="text-3xl text-slate-600">/ 8</span>
                        </div>
                     </div>
