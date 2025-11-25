@@ -7,7 +7,13 @@ export const IMAGES = {
   brahman: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Brahman_%28EMAPA%29_110307_REFON.jpg/960px-Brahman_%28EMAPA%29_110307_REFON.jpg",
   atlas: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vatche_Brune_Atlasse_emey_veye.jpg/640px-Vatche_Brune_Atlasse_emey_veye.jpg",
   jersey: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Jersey_cow_J4.jpg/640px-Jersey_cow_J4.jpg",
-  simmental: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg/640px-Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg"
+  simmental: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg/640px-Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg",
+  charolais: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Taureau_charolais.jpg",
+  limousin: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Vache-de-race-limousine-en-correze-2.jpg/960px-Vache-de-race-limousine-en-correze-2.jpg",
+  aubrac: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Vache_Aubrac.jpg/960px-Vache_Aubrac.jpg",
+  normande: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Vachesnormandes.jpg/960px-Vachesnormandes.jpg",
+  brown_swiss: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Braunvieh06.JPG/960px-Braunvieh06.JPG",
+  tarentaise: "https://americantarentaise.org/wp-content/uploads/2025/04/Bull-Ad-3.png"
 };
 
 export const CONTENT: Record<string, TranslationContent> = {
@@ -245,6 +251,138 @@ export const CONTENT: Record<string, TranslationContent> = {
                 { x: 50, y: 50, label: "الهيكل", text: "هيكل عظمي قوي وعضلات بارزة." },
                 { x: 50, y: 70, label: "الإنتاج", text: "توازن جيد بين الضرع واللحم." }
               ]
+            },
+            {
+              id: "charolais",
+              name: "شاروليه (Charolais)",
+              origin: "فرنسا",
+              type: "لاحم (مصرحة للاستيراد)",
+              color: "أبيض كريمي",
+              height: "135-150 سم",
+              image: IMAGES.charolais,
+              stats: { milk: "للعجول فقط", fat: "منخفض الدهون", protein: "عالي جداً", weight: "1000-1400 كغ" },
+              clinicalProfile: { risks: "عسر ولادة مرتفع", resistance: "تحمل جيد للطقس", reproductive: "خصوبة متوسطة" },
+              description: "عملاقة اللحوم الفرنسية. تتميز بنمو عضلي استثنائي وسرعة تسمين عالية.",
+              traits: ["نمو عضلي هائل", "لحم قليل الدهون", "وزن ثقيل"],
+              expandedInfo: {
+                diet: "شرهة جداً؛ تحتاج مراعي غنية أو أعلاف مركزة لتحقيق إمكانات النمو.",
+                diseases: "المشكلة الرئيسية هي عسر الولادة (Dystocia) بسبب ضخامة الأجنة.",
+                breeding: "غالباً ما تستخدم في التهجين لزيادة وزن عجول الفطام."
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "العضلات", text: "تضخم عضلي وراثي (Double Muscling)." },
+                { x: 80, y: 50, label: "الفخذ", text: "فخذ ضخم ومستدير." }
+              ]
+            },
+            {
+              id: "limousin",
+              name: "ليموزين (Limousin)",
+              origin: "فرنسا",
+              type: "لاحم (مصرحة للاستيراد)",
+              color: "أحمر ذهبي",
+              height: "135-145 سم",
+              image: IMAGES.limousin,
+              stats: { milk: "متوسط", fat: "منخفض", protein: "عالي الجودة", weight: "900-1100 كغ" },
+              clinicalProfile: { risks: "عصبية المزاج", resistance: "مناعة قوية", reproductive: "سهولة ولادة جيدة" },
+              description: "توازن مثالي بين النمو العضلي وسهولة الولادة. لحمها ذو ألياف دقيقة وممتازة.",
+              traits: ["سهولة ولادة", "مردود ذبيحة عالٍ", "جودة ألياف"],
+              expandedInfo: {
+                diet: "كفاءة تحويل غذائي ممتازة حتى مع الأعلاف المتوسطة.",
+                diseases: "صحة عامة جيدة، لكن يجب الحذر من مزاجها العصبي أثناء التعامل البيطري.",
+                breeding: "مفضلة لإنتاج لحم العجل (Veal) واللحوم الحمراء الخالية من الدهون."
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "الظهر", text: "خط ظهر مستقيم وعريض." },
+                { x: 30, y: 30, label: "اللون", text: "هالات فاتحة حول العينين والخطم." }
+              ]
+            },
+            {
+              id: "aubrac",
+              name: "أوبراك (Aubrac)",
+              origin: "فرنسا",
+              type: "لاحم (مصرحة للاستيراد)",
+              color: "بني (قمحي) مع كحل",
+              height: "130 سم",
+              image: IMAGES.aubrac,
+              stats: { milk: "جيد للأمومة", fat: "متوسط", protein: "جيد", weight: "600-800 كغ" },
+              clinicalProfile: { risks: "منخفضة", resistance: "عالية جداً (ريفية)", reproductive: "خصوبة وأمومة ممتازة" },
+              description: "سلالة ريفية (Rustique) بامتياز. صلبة، وتتحمل الظروف القاسية مع قدرات أمومة رائعة.",
+              traits: ["ريفية", "سهولة ولادة", "أمومة"],
+              expandedInfo: {
+                diet: "تثمن المراعي الفقيرة والنباتات الخشنة بكفاءة عالية.",
+                diseases: "مقاومة استثنائية للأمراض ومشاكل الأقدام.",
+                breeding: "تستخدم كخط أمومي لإنتاج عجول هجينة قوية."
+              },
+              hotspots: [
+                { x: 30, y: 30, label: "العيون", text: "عيون مكحلة بالسواد (Maquillée)." },
+                { x: 50, y: 80, label: "الأقدام", text: "أظلاف سوداء صلبة جداً." }
+              ]
+            },
+            {
+              id: "normande",
+              name: "نورماند (Normande)",
+              origin: "فرنسا",
+              type: "مختلطة",
+              color: "ثلاثية الألوان (أبيض، بني، أسود)",
+              height: "140 سم",
+              image: IMAGES.normande,
+              stats: { milk: "6,500 كغ", fat: "4.2%", protein: "3.6%", weight: "700-800 كغ" },
+              clinicalProfile: { risks: "متوسطة", resistance: "جيدة للمناخ الرطب", reproductive: "خصوبة عالية" },
+              description: "تشتهر بحليبها الغني جداً بالبروتين (الجبن) ولحمها الرخامي ذي النكهة المميزة.",
+              traits: ["حليب دسم", "لحم رخامي", "تأقلم"],
+              expandedInfo: {
+                diet: "تستفيد جيداً من المراعي الخضراء الغنية.",
+                diseases: "مقاومة جيدة لأشعة الشمس بفضل البقع حول العينين (النظارات).",
+                breeding: "الخيار الأول لأجبان الكاممبير."
+              },
+              hotspots: [
+                { x: 30, y: 30, label: "العيون", text: "بقع 'النظارات' تحمي من السرطان وأشعة الشمس." },
+                { x: 50, y: 50, label: "اللون", text: "نمط لوني مميز (مبقع)." }
+              ]
+            },
+            {
+              id: "brown_swiss",
+              name: "برون دي آلب (Brune des Alpes)",
+              origin: "سويسرا",
+              type: "مختلطة (ميل للحليب)",
+              color: "بني رمادي موحد",
+              height: "140-150 سم",
+              image: IMAGES.brown_swiss,
+              stats: { milk: "8,000 كغ", fat: "4.0%", protein: "3.5%", weight: "650-700 كغ" },
+              clinicalProfile: { risks: "منخفضة", resistance: "تحمل حرارة ممتاز", reproductive: "طول عمر إنتاجي" },
+              description: "ثاني أكبر سلالة حليب عالمياً. تتميز بطول العمر الإنتاجي وتحمل الظروف المناخية المتنوعة.",
+              traits: ["طول عمر", "بروتين عال", "تحمل حرارة"],
+              expandedInfo: {
+                diet: "كفاءة تحويل ممتازة للأعلاف الليفية.",
+                diseases: "أقدام قوية جداً ومقاومة للعرج.",
+                breeding: "تستخدم لتحسين نسبة البروتين وصلابة السلالات الأخرى."
+              },
+              hotspots: [
+                { x: 30, y: 30, label: "الأذنين", text: "داخل الأذنين فاتح اللون ومكسو بالشعر." },
+                { x: 50, y: 80, label: "الأقدام", text: "أقدام سوداء قوية جداً." }
+              ]
+            },
+            {
+              id: "tarentaise",
+              name: "تارانتيز (Tarentaise)",
+              origin: "فرنسا (جبال الألب)",
+              type: "مختلطة",
+              color: "بني محمر (أجوري)",
+              height: "130 سم",
+              image: IMAGES.tarentaise,
+              stats: { milk: "5,000 كغ", fat: "3.8%", protein: "3.4%", weight: "550 كغ" },
+              clinicalProfile: { risks: "منخفضة", resistance: "عالية جداً (جبلية)", reproductive: "خصوبة عالية" },
+              description: "سلالة جبلية صلبة جداً. تتسلق المنحدرات الوعرة وتنتج حليباً خاصاً للأجبان.",
+              traits: ["جبلية", "حليب أجبان", "صلابة"],
+              expandedInfo: {
+                diet: "تقتات على مراعي المرتفعات الفقيرة.",
+                diseases: "مقاومة استثنائية لأمراض الجهاز التنفسي والظروف المناخية القاسية.",
+                breeding: "تستخدم في المناطق الجبلية الوعرة."
+              },
+              hotspots: [
+                { x: 30, y: 30, label: "الرأس", text: "رأس معبر وعيون داكنة." },
+                { x: 50, y: 50, label: "الجسم", text: "جسم مدمج وقوي للعضلات." }
+              ]
             }
           ]
         }
@@ -368,7 +506,12 @@ export const CONTENT: Record<string, TranslationContent> = {
           { id: "montbeliarde", name: "مونبيليارد", milkIndex: 75, fatIndex: 70, adaptationIndex: 60, maintenanceCost: 70 },
           { id: "jersey", name: "جيرسي", milkIndex: 60, fatIndex: 100, adaptationIndex: 50, maintenanceCost: 60 },
           { id: "atlas", name: "براون أطلس", milkIndex: 15, fatIndex: 65, adaptationIndex: 100, maintenanceCost: 20 },
-          { id: "brahman", name: "براهمان", milkIndex: 20, fatIndex: 60, adaptationIndex: 95, maintenanceCost: 30 }
+          { id: "brahman", name: "براهمان", milkIndex: 20, fatIndex: 60, adaptationIndex: 95, maintenanceCost: 30 },
+          { id: "simmental", name: "سيمينتال", milkIndex: 70, fatIndex: 60, adaptationIndex: 75, maintenanceCost: 80 },
+          { id: "charolais", name: "شاروليه", milkIndex: 10, fatIndex: 40, adaptationIndex: 65, maintenanceCost: 90 },
+          { id: "limousin", name: "ليموزين", milkIndex: 15, fatIndex: 30, adaptationIndex: 70, maintenanceCost: 65 },
+          { id: "aubrac", name: "أوبراك", milkIndex: 20, fatIndex: 45, adaptationIndex: 90, maintenanceCost: 40 },
+          { id: "brown_swiss", name: "برون دي آلب", milkIndex: 80, fatIndex: 60, adaptationIndex: 85, maintenanceCost: 75 }
         ]
       },
       conclusion: {
@@ -627,6 +770,138 @@ export const CONTENT: Record<string, TranslationContent> = {
                 { x: 50, y: 50, label: "Frame", text: "Heavy skeletal frame and muscularity." },
                 { x: 50, y: 70, label: "Udder", text: "Good balance of udder health and beef capacity." }
               ]
+            },
+            {
+              id: "charolais",
+              name: "Charolais",
+              origin: "France",
+              type: "Beef (Authorized)",
+              color: "Cream White",
+              height: "135-150 cm",
+              image: IMAGES.charolais,
+              stats: { milk: "Nurse only", fat: "Lean", protein: "Very High", weight: "1000-1400 kg" },
+              clinicalProfile: { risks: "High Dystocia", resistance: "Good weather tolerance", reproductive: "Moderate fertility" },
+              description: "French beef giant. Known for exceptional muscle growth and high finishing speeds.",
+              traits: ["Huge Muscle", "Lean Meat", "Heavy Weight"],
+              expandedInfo: {
+                diet: "Voracious eater; requires rich pastures or concentrates to meet growth potential.",
+                diseases: "Main issue is Dystocia (difficult birth) due to large calf size.",
+                breeding: "Often used in terminal crossing to increase weaning weight."
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "Muscling", text: "Double muscling gene often present." },
+                { x: 80, y: 50, label: "Thigh", text: "Massive round thigh." }
+              ]
+            },
+            {
+              id: "limousin",
+              name: "Limousin",
+              origin: "France",
+              type: "Beef (Authorized)",
+              color: "Golden Red",
+              height: "135-145 cm",
+              image: IMAGES.limousin,
+              stats: { milk: "Moderate", fat: "Low", protein: "High Quality", weight: "900-1100 kg" },
+              clinicalProfile: { risks: "Nervous temperament", resistance: "Strong immunity", reproductive: "Good calving ease" },
+              description: "Perfect balance of muscle growth and calving ease. Meat has fine fibers and excellent yield.",
+              traits: ["Calving Ease", "High Yield", "Fine Fiber"],
+              expandedInfo: {
+                diet: "Excellent feed conversion efficiency even on moderate forage.",
+                diseases: "Good general health, but watch for nervous temperament during handling.",
+                breeding: "Preferred for producing high-quality lean beef and veal."
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "Back", text: "Straight and broad back line." },
+                { x: 30, y: 30, label: "Color", text: "Lighter circles around eyes and muzzle." }
+              ]
+            },
+            {
+              id: "aubrac",
+              name: "Aubrac",
+              origin: "France",
+              type: "Beef (Authorized)",
+              color: "Wheat (Fawn) with black points",
+              height: "130 cm",
+              image: IMAGES.aubrac,
+              stats: { milk: "Good Maternal", fat: "Moderate", protein: "Good", weight: "600-800 kg" },
+              clinicalProfile: { risks: "Low", resistance: "Very High (Rustic)", reproductive: "Excellent fertility & mothering" },
+              description: "A rustic breed par excellence. Hardy, withstands harsh conditions with great maternal abilities.",
+              traits: ["Rustic", "Easy Calving", "Maternal"],
+              expandedInfo: {
+                diet: "Valorizes poor pastures and roughage efficiently.",
+                diseases: "Exceptional resistance to diseases and foot problems.",
+                breeding: "Used as a maternal line for hardy crossbred calves."
+              },
+              hotspots: [
+                { x: 30, y: 30, label: "Eyes", text: "Black-lined eyes (Makeup)." },
+                { x: 50, y: 80, label: "Feet", text: "Very hard black hooves." }
+              ]
+            },
+            {
+              id: "normande",
+              name: "Normande",
+              origin: "France",
+              type: "Mixed",
+              color: "Tricolor (White, Brown, Black)",
+              height: "140 cm",
+              image: IMAGES.normande,
+              stats: { milk: "6,500 kg", fat: "4.2%", protein: "3.6%", weight: "700-800 kg" },
+              clinicalProfile: { risks: "Moderate", resistance: "Good in damp climate", reproductive: "High fertility" },
+              description: "Famous for very protein-rich milk (cheese) and marbled meat with distinctive flavor.",
+              traits: ["Rich Milk", "Marbled Meat", "Adaptable"],
+              expandedInfo: {
+                diet: "Benefits well from rich green pastures.",
+                diseases: "Good resistance to sun due to eye patches ('spectacles').",
+                breeding: "Top choice for Camembert cheese production."
+              },
+              hotspots: [
+                { x: 30, y: 30, label: "Eyes", text: "'Spectacle' patches protect from sun cancer." },
+                { x: 50, y: 50, label: "Coat", text: "Distinctive spotted coat pattern." }
+              ]
+            },
+            {
+              id: "brown_swiss",
+              name: "Brown Swiss",
+              origin: "Switzerland",
+              type: "Mixed (Dairy lean)",
+              color: "Solid Grey-Brown",
+              height: "140-150 cm",
+              image: IMAGES.brown_swiss,
+              stats: { milk: "8,000 kg", fat: "4.0%", protein: "3.5%", weight: "650-700 kg" },
+              clinicalProfile: { risks: "Low", resistance: "Excellent heat tolerance", reproductive: "Long productive life" },
+              description: "Second largest dairy breed globally. Known for longevity and tolerance to diverse climates.",
+              traits: ["Longevity", "High Protein", "Heat Tolerance"],
+              expandedInfo: {
+                diet: "Excellent conversion of fibrous feed.",
+                diseases: "Very strong feet and legs; resistant to lameness.",
+                breeding: "Used to improve protein ratio and robustness in other breeds."
+              },
+              hotspots: [
+                { x: 30, y: 30, label: "Ears", text: "Light colored inner ears with fur." },
+                { x: 50, y: 80, label: "Feet", text: "Very strong black feet." }
+              ]
+            },
+            {
+              id: "tarentaise",
+              name: "Tarentaise",
+              origin: "France (Alps)",
+              type: "Mixed",
+              color: "Reddish Brown",
+              height: "130 cm",
+              image: IMAGES.tarentaise,
+              stats: { milk: "5,000 kg", fat: "3.8%", protein: "3.4%", weight: "550 kg" },
+              clinicalProfile: { risks: "Low", resistance: "Very High (Mountain)", reproductive: "High fertility" },
+              description: "Very hardy mountain breed. Climbs steep slopes and produces special milk for cheese.",
+              traits: ["Mountain", "Cheese Milk", "Hardiness"],
+              expandedInfo: {
+                diet: "Survives on poor high-altitude pastures.",
+                diseases: "Exceptional resistance to respiratory issues and harsh weather.",
+                breeding: "Used in rugged mountain areas."
+              },
+              hotspots: [
+                { x: 30, y: 30, label: "Head", text: "Expressive head with dark eyes." },
+                { x: 50, y: 50, label: "Body", text: "Compact and muscular body." }
+              ]
             }
           ]
         }
@@ -750,7 +1025,12 @@ export const CONTENT: Record<string, TranslationContent> = {
           { id: "montbeliarde", name: "Montbéliarde", milkIndex: 75, fatIndex: 70, adaptationIndex: 60, maintenanceCost: 70 },
           { id: "jersey", name: "Jersey", milkIndex: 60, fatIndex: 100, adaptationIndex: 50, maintenanceCost: 60 },
           { id: "atlas", name: "Brown Atlas", milkIndex: 15, fatIndex: 65, adaptationIndex: 100, maintenanceCost: 20 },
-          { id: "brahman", name: "Brahman", milkIndex: 20, fatIndex: 60, adaptationIndex: 95, maintenanceCost: 30 }
+          { id: "brahman", name: "Brahman", milkIndex: 20, fatIndex: 60, adaptationIndex: 95, maintenanceCost: 30 },
+          { id: "simmental", name: "Simmental", milkIndex: 70, fatIndex: 60, adaptationIndex: 75, maintenanceCost: 80 },
+          { id: "charolais", name: "Charolais", milkIndex: 10, fatIndex: 40, adaptationIndex: 65, maintenanceCost: 90 },
+          { id: "limousin", name: "Limousin", milkIndex: 15, fatIndex: 30, adaptationIndex: 70, maintenanceCost: 65 },
+          { id: "aubrac", name: "Aubrac", milkIndex: 20, fatIndex: 45, adaptationIndex: 90, maintenanceCost: 40 },
+          { id: "brown_swiss", name: "Brown Swiss", milkIndex: 80, fatIndex: 60, adaptationIndex: 85, maintenanceCost: 75 }
         ]
       },
       conclusion: {
@@ -1009,6 +1289,138 @@ export const CONTENT: Record<string, TranslationContent> = {
                 { x: 50, y: 50, label: "Charpente", text: "Ossature lourde et muscularité." },
                 { x: 50, y: 70, label: "Pis", text: "Bon équilibre entre santé du pis et capacité bouchère." }
               ]
+            },
+            {
+              id: "charolais",
+              name: "Charolaise",
+              origin: "France",
+              type: "Bouchère (Autorisée)",
+              color: "Blanc crème",
+              height: "135-150 cm",
+              image: IMAGES.charolais,
+              stats: { milk: "Allaitement seulement", fat: "Maigre", protein: "Très Élevé", weight: "1000-1400 kg" },
+              clinicalProfile: { risks: "Forte dystocie", resistance: "Bonne tolérance climatique", reproductive: "Fertilité moyenne" },
+              description: "Géante française de la viande. Connue pour sa croissance musculaire exceptionnelle et sa vitesse d'engraissement.",
+              traits: ["Muscle Massif", "Viande Maigre", "Poids Lourd"],
+              expandedInfo: {
+                diet: "Très gourmande ; nécessite des pâturages riches ou des concentrés pour atteindre son potentiel de croissance.",
+                diseases: "Le problème principal est la dystocie (mise bas difficile) due à la grande taille des veaux.",
+                breeding: "Souvent utilisée en croisement terminal pour augmenter le poids au sevrage."
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "Musculature", text: "Gène culard souvent présent." },
+                { x: 80, y: 50, label: "Cuisse", text: "Cuisse ronde et massive." }
+              ]
+            },
+            {
+              id: "limousin",
+              name: "Limousine",
+              origin: "France",
+              type: "Bouchère (Autorisée)",
+              color: "Rouge doré",
+              height: "135-145 cm",
+              image: IMAGES.limousin,
+              stats: { milk: "Modéré", fat: "Faible", protein: "Haute Qualité", weight: "900-1100 kg" },
+              clinicalProfile: { risks: "Tempérament nerveux", resistance: "Forte immunité", reproductive: "Bonne facilité de vêlage" },
+              description: "Équilibre parfait entre croissance musculaire et facilité de naissance. Viande à fibres fines et excellent rendement.",
+              traits: ["Vêlage Facile", "Haut Rendement", "Fibre Fine"],
+              expandedInfo: {
+                diet: "Excellente efficacité de conversion alimentaire même sur fourrage moyen.",
+                diseases: "Bonne santé générale, mais attention au tempérament nerveux lors des manipulations.",
+                breeding: "Préférée pour la production de veau de boucherie et de viande rouge maigre."
+              },
+              hotspots: [
+                { x: 50, y: 50, label: "Dos", text: "Ligne de dos droite et large." },
+                { x: 30, y: 30, label: "Couleur", text: "Auréoles claires autour des yeux et du mufle." }
+              ]
+            },
+            {
+              id: "aubrac",
+              name: "Aubrac",
+              origin: "France",
+              type: "Bouchère (Autorisée)",
+              color: "Fauve (Froment) avec extrémités noires",
+              height: "130 cm",
+              image: IMAGES.aubrac,
+              stats: { milk: "Bonne Maternelle", fat: "Modéré", protein: "Bon", weight: "600-800 kg" },
+              clinicalProfile: { risks: "Faible", resistance: "Très Élevée (Rustique)", reproductive: "Fertilité & Maternité excellentes" },
+              description: "Une race rustique par excellence. Robuste, résiste aux conditions difficiles avec de grandes capacités maternelles.",
+              traits: ["Rustique", "Vêlage Facile", "Maternelle"],
+              expandedInfo: {
+                diet: "Valorise les pâturages pauvres et les fourrages grossiers avec une grande efficacité.",
+                diseases: "Résistance exceptionnelle aux maladies et aux problèmes de pieds.",
+                breeding: "Utilisée comme lignée maternelle pour produire des veaux croisés robustes."
+              },
+              hotspots: [
+                { x: 30, y: 30, label: "Yeux", text: "Yeux maquillés de noir." },
+                { x: 50, y: 80, label: "Pieds", text: "Sabots noirs très durs." }
+              ]
+            },
+            {
+              id: "normande",
+              name: "Normande",
+              origin: "France",
+              type: "Mixte",
+              color: "Tricolore (Blanc, Brun, Noir)",
+              height: "140 cm",
+              image: IMAGES.normande,
+              stats: { milk: "6 500 kg", fat: "4.2%", protein: "3.6%", weight: "700-800 kg" },
+              clinicalProfile: { risks: "Modéré", resistance: "Bonne en climat humide", reproductive: "Haute fertilité" },
+              description: "Célèbre pour son lait très riche en protéines (fromage) et sa viande persillée au goût distinctif.",
+              traits: ["Lait Riche", "Viande Persillée", "Adaptable"],
+              expandedInfo: {
+                diet: "Profite bien des riches pâturages verts.",
+                diseases: "Bonne résistance au soleil grâce aux taches autour des yeux ('lunettes').",
+                breeding: "Premier choix pour la production de Camembert."
+              },
+              hotspots: [
+                { x: 30, y: 30, label: "Yeux", text: "Taches 'lunettes' protégeant du cancer solaire." },
+                { x: 50, y: 50, label: "Robe", text: "Motif tacheté distinctif." }
+              ]
+            },
+            {
+              id: "brown_swiss",
+              name: "Brune des Alpes",
+              origin: "Suisse",
+              type: "Mixte (Tendance lait)",
+              color: "Brun gris uniforme",
+              height: "140-150 cm",
+              image: IMAGES.brown_swiss,
+              stats: { milk: "8 000 kg", fat: "4.0%", protein: "3.5%", weight: "650-700 kg" },
+              clinicalProfile: { risks: "Faible", resistance: "Excellente tolérance chaleur", reproductive: "Longue vie productive" },
+              description: "Deuxième plus grande race laitière mondiale. Connue pour sa longévité et sa tolérance aux climats divers.",
+              traits: ["Longévité", "Haut Protéine", "Tolérance Chaleur"],
+              expandedInfo: {
+                diet: "Excellente conversion des aliments fibreux.",
+                diseases: "Pieds et jambes très solides ; résistante aux boiteries.",
+                breeding: "Utilisée pour améliorer le taux de protéines et la robustesse d'autres races."
+              },
+              hotspots: [
+                { x: 30, y: 30, label: "Oreilles", text: "Intérieur des oreilles clair et velu." },
+                { x: 50, y: 80, label: "Pieds", text: "Pieds noirs très forts." }
+              ]
+            },
+            {
+              id: "tarentaise",
+              name: "Tarentaise",
+              origin: "France (Alpes)",
+              type: "Mixte",
+              color: "Brun rougeâtre (Fauve)",
+              height: "130 cm",
+              image: IMAGES.tarentaise,
+              stats: { milk: "5 000 kg", fat: "3.8%", protein: "3.4%", weight: "550 kg" },
+              clinicalProfile: { risks: "Faible", resistance: "Très Élevée (Montagne)", reproductive: "Haute fertilité" },
+              description: "Race de montagne très rustique. Grimpe les pentes raides et produit un lait spécial fromages.",
+              traits: ["Montagne", "Lait Fromage", "Rusticité"],
+              expandedInfo: {
+                diet: "Survit sur les pâturages pauvres de haute altitude.",
+                diseases: "Résistance exceptionnelle aux problèmes respiratoires et au climat rude.",
+                breeding: "Utilisée dans les zones montagneuses difficiles."
+              },
+              hotspots: [
+                { x: 30, y: 30, label: "Tête", text: "Tête expressive aux yeux sombres." },
+                { x: 50, y: 50, label: "Corps", text: "Corps compact et musclé." }
+              ]
             }
           ]
         }
@@ -1132,7 +1544,12 @@ export const CONTENT: Record<string, TranslationContent> = {
           { id: "montbeliarde", name: "Montbéliarde", milkIndex: 75, fatIndex: 70, adaptationIndex: 60, maintenanceCost: 70 },
           { id: "jersey", name: "Jersey", milkIndex: 60, fatIndex: 100, adaptationIndex: 50, maintenanceCost: 60 },
           { id: "atlas", name: "Brune de l'Atlas", milkIndex: 15, fatIndex: 65, adaptationIndex: 100, maintenanceCost: 20 },
-          { id: "brahman", name: "Brahman", milkIndex: 20, fatIndex: 60, adaptationIndex: 95, maintenanceCost: 30 }
+          { id: "brahman", name: "Brahman", milkIndex: 20, fatIndex: 60, adaptationIndex: 95, maintenanceCost: 30 },
+          { id: "simmental", name: "Simmental", milkIndex: 70, fatIndex: 60, adaptationIndex: 75, maintenanceCost: 80 },
+          { id: "charolais", name: "Charolaise", milkIndex: 10, fatIndex: 40, adaptationIndex: 65, maintenanceCost: 90 },
+          { id: "limousin", name: "Limousine", milkIndex: 15, fatIndex: 30, adaptationIndex: 70, maintenanceCost: 65 },
+          { id: "aubrac", name: "Aubrac", milkIndex: 20, fatIndex: 45, adaptationIndex: 90, maintenanceCost: 40 },
+          { id: "brown_swiss", name: "Brune des Alpes", milkIndex: 80, fatIndex: 60, adaptationIndex: 85, maintenanceCost: 75 }
         ]
       },
       conclusion: {
