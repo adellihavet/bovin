@@ -58,15 +58,33 @@ export interface GlossaryTerm {
   definition: string;
 }
 
+export interface QuizLabels {
+  nextQuestion: string;
+  completeSelection: string;
+  confirmSelection: string;
+  correctFeedback: string;
+  incorrectFeedback: string;
+  excellentAnalysis: string;
+  incorrectAssessment: string;
+  question: string;
+  explanation: string; // Added for print
+  correctAnswer: string; // Added for print
+}
+
 export interface TranslationContent {
   direction: 'ltr' | 'rtl';
   universityHeader: string[];
   header: {
     title: string;
     subtitle: string;
-    badges: string[];
     glossaryBtn: string;
   };
+  ui: {
+    printBtn: string;
+    closeBtn: string;
+    printTitle: string;
+  };
+  quizLabels: QuizLabels;
   nav: {
     cover: string;
     intro: string;
@@ -94,7 +112,7 @@ export interface TranslationContent {
       quiz: { title: string; questions: QuizQuestion[] };
       content: {
         title: string;
-        text: string;
+        text: string[]; // Changed to array for multiple paragraphs
         cards: { title: string; desc: string; icon: string }[];
       };
     };
@@ -112,6 +130,14 @@ export interface TranslationContent {
           height: string;
           weight: string;
           origin: string;
+          clinicalProfile: string;
+          diet: string;
+          diseases: string;
+          breeding: string;
+          traits: string;
+          risks: string;
+          resistance: string;
+          reproductive: string;
         };
         breeds: BreedDetail[];
       };
@@ -131,6 +157,10 @@ export interface TranslationContent {
           color: string;
           height: string;
           weight: string;
+          population: string;
+          diet: string;
+          diseases: string;
+          breeding: string;
         };
         subBreeds: { 
           name: string; 
@@ -173,7 +203,7 @@ export interface TranslationContent {
         title: string;
         rank: string;
         score: string;
-        message: string;
+        message: string[]; // Changed to array
       };
     };
   };

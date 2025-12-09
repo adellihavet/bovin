@@ -7,8 +7,8 @@ import AlgeriaMap from './components/AlgeriaMap';
 import ImageWithSkeleton from './components/ImageWithSkeleton';
 import PronunciationBtn from './components/PronunciationBtn';
 import ImageZoomModal from './components/ImageZoomModal';
-import { Lock, Award, BookOpen, Activity, Map, Microscope, ChevronLeft, CheckSquare, Square, Globe, Book, X, ArrowDown, ArrowUp, ZoomIn, Menu } from 'lucide-react';
-import { BreedDetail, Language, ComparisonDataPoint } from './types';
+import { Lock, Award, BookOpen, Activity, Map, Microscope, ChevronLeft, CheckSquare, Square, Globe, Book, X, ArrowDown, ArrowUp, ZoomIn, Menu, Printer } from 'lucide-react';
+import { BreedDetail, Language, ComparisonDataPoint, QuizQuestion } from './types';
 
 const BreedCard: React.FC<{ breed: BreedDetail; labels: any; readMoreLabel: string; showLessLabel: string; lang: Language; onZoom: (breed: BreedDetail) => void }> = ({ breed, labels, readMoreLabel, showLessLabel, lang, onZoom }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -79,26 +79,26 @@ const BreedCard: React.FC<{ breed: BreedDetail; labels: any; readMoreLabel: stri
           <div className={`overflow-hidden transition-all duration-500 ${isExpanded ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
             {/* Clinical Profile */}
             <div className="mb-4 space-y-2 pt-4 border-t border-white/10">
-              <h5 className="text-xs font-bold text-slate-500 uppercase tracking-widest pb-1">Clinical Profile</h5>
+              <h5 className="text-xs font-bold text-slate-500 uppercase tracking-widest pb-1">{labels.clinicalProfile}</h5>
               <div className="text-sm text-slate-300">
-                <p><span className="text-red-400">⚠️</span> {breed.clinicalProfile.risks}</p>
-                <p><span className="text-green-400">🛡️</span> {breed.clinicalProfile.resistance}</p>
-                <p><span className="text-blue-400">🧬</span> {breed.clinicalProfile.reproductive}</p>
+                <p><span className="text-red-400">⚠️</span> <span className="text-xs text-slate-500">{labels.risks}:</span> {breed.clinicalProfile.risks}</p>
+                <p><span className="text-green-400">🛡️</span> <span className="text-xs text-slate-500">{labels.resistance}:</span> {breed.clinicalProfile.resistance}</p>
+                <p><span className="text-blue-400">🧬</span> <span className="text-xs text-slate-500">{labels.reproductive}:</span> {breed.clinicalProfile.reproductive}</p>
               </div>
             </div>
             
             {/* Detailed Info: Diet, Diseases, Breeding */}
             <div className="space-y-3 border-t border-white/10 pt-3 mb-4">
                <div>
-                 <h6 className="text-academic-primary font-bold text-xs uppercase mb-1">Diet & Nutrition</h6>
+                 <h6 className="text-academic-primary font-bold text-xs uppercase mb-1">{labels.diet}</h6>
                  <p className="text-xs text-slate-300 leading-relaxed">{breed.expandedInfo.diet}</p>
                </div>
                <div>
-                 <h6 className="text-academic-primary font-bold text-xs uppercase mb-1">Common Diseases</h6>
+                 <h6 className="text-academic-primary font-bold text-xs uppercase mb-1">{labels.diseases}</h6>
                  <p className="text-xs text-slate-300 leading-relaxed">{breed.expandedInfo.diseases}</p>
                </div>
                <div>
-                 <h6 className="text-academic-primary font-bold text-xs uppercase mb-1">Breeding Practices</h6>
+                 <h6 className="text-academic-primary font-bold text-xs uppercase mb-1">{labels.breeding}</h6>
                  <p className="text-xs text-slate-300 leading-relaxed">{breed.expandedInfo.breeding}</p>
                </div>
             </div>
@@ -173,22 +173,22 @@ const SubBreedCard: React.FC<{ sb: any; labels: any; isSelected: boolean; onClic
 
        {/* Population Info */}
        <p className="text-xs text-slate-500 mt-2 mb-4">
-          <span className="font-bold text-slate-400">Population:</span> {sb.population}
+          <span className="font-bold text-slate-400">{labels.population}:</span> {sb.population}
        </p>
 
        {/* Expanded Info */}
        <div className={`overflow-hidden transition-all duration-500 ${isExpanded ? 'max-h-[600px] opacity-100 mt-4 pt-4 border-t border-white/10' : 'max-h-0 opacity-0'}`}>
           <div className="space-y-4 text-sm">
              <div>
-               <h6 className="text-academic-accent font-bold text-xs uppercase mb-1">Diet & Grazing</h6>
+               <h6 className="text-academic-accent font-bold text-xs uppercase mb-1">{labels.diet}</h6>
                <p className="text-slate-300 leading-relaxed">{sb.expandedInfo.diet}</p>
              </div>
              <div>
-               <h6 className="text-academic-accent font-bold text-xs uppercase mb-1">Disease Resistance</h6>
+               <h6 className="text-academic-accent font-bold text-xs uppercase mb-1">{labels.diseases}</h6>
                <p className="text-slate-300 leading-relaxed">{sb.expandedInfo.diseases}</p>
              </div>
              <div>
-               <h6 className="text-academic-accent font-bold text-xs uppercase mb-1">Breeding System</h6>
+               <h6 className="text-academic-accent font-bold text-xs uppercase mb-1">{labels.breeding}</h6>
                <p className="text-slate-300 leading-relaxed">{sb.expandedInfo.breeding}</p>
              </div>
           </div>
@@ -204,7 +204,7 @@ const SubBreedCard: React.FC<{ sb: any; labels: any; isSelected: boolean; onClic
   );
 };
 
-const GlossaryModal: React.FC<{ isOpen: boolean; onClose: () => void; title: string; terms: {term: string, definition: string}[] }> = ({ isOpen, onClose, title, terms }) => {
+const GlossaryModal: React.FC<{ isOpen: boolean; onClose: () => void; title: string; terms: {term: string, definition: string}[]; closeLabel: string }> = ({ isOpen, onClose, title, terms, closeLabel }) => {
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
@@ -224,7 +224,231 @@ const GlossaryModal: React.FC<{ isOpen: boolean; onClose: () => void; title: str
             </div>
           ))}
         </div>
+        <div className="mt-8 flex justify-end">
+           <button onClick={onClose} className="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-white font-bold transition-colors">
+             {closeLabel}
+           </button>
+        </div>
       </div>
+    </div>
+  );
+};
+
+// --- PRINTABLE REPORT COMPONENT ---
+const PrintableReport: React.FC<{ lang: Language }> = ({ lang }) => {
+  const t = CONTENT[lang];
+  
+  const QuizReview: React.FC<{ questions: QuizQuestion[] }> = ({ questions }) => (
+    <div className="mb-4 bg-gray-50 p-4 rounded border border-gray-200">
+      <h4 className="font-bold mb-2 uppercase text-xs text-gray-500 border-b pb-1">Quiz Review</h4>
+      {questions.map((q, i) => {
+        const correctOpt = q.options.find(o => o.isCorrect);
+        return (
+          <div key={q.id} className="mb-3 text-sm avoid-break">
+            <p className="font-bold text-black mb-1">{i + 1}. {q.text}</p>
+            <p className="text-green-700 text-xs mb-1"><strong>{t.quizLabels.correctAnswer}:</strong> {correctOpt?.text}</p>
+            <p className="text-gray-600 text-xs italic bg-white p-2 rounded border border-gray-100">
+               <strong>{t.quizLabels.explanation}:</strong> {q.explanation}
+            </p>
+          </div>
+        )
+      })}
+    </div>
+  );
+
+  return (
+    <div id="print-container" className="hidden print:block bg-white text-black p-10 font-sans leading-relaxed max-w-[210mm] mx-auto" dir={t.direction}>
+       {/* COVER PAGE */}
+       <div className="flex flex-col items-center justify-center min-h-[90vh] text-center border-b-2 border-black mb-8 page-break">
+          <div className="mb-8 space-y-1 text-sm uppercase tracking-widest text-gray-600">
+             {t.universityHeader.map((line, i) => <p key={i}>{line}</p>)}
+          </div>
+          
+          <div className="mb-12">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/University_of_Laghouat_logo.jpg/250px-University_of_Laghouat_logo.jpg" alt="Logo" className="w-32 h-32 mx-auto grayscale opacity-80" />
+          </div>
+
+          <h1 className="text-4xl font-bold mb-6 max-w-2xl leading-tight">{t.sections.cover.title}</h1>
+          <p className="text-xl text-gray-500 mb-16 uppercase tracking-widest">{t.header.subtitle}</p>
+
+          <div className="w-full max-w-md border-t border-b border-gray-300 py-8 mb-12">
+             <p className="font-bold text-gray-500 text-sm uppercase mb-4">{t.sections.cover.preparedBy}</p>
+             <div className="space-y-2 text-xl font-bold">
+               {t.sections.cover.students.map(s => <p key={s}>{s}</p>)}
+             </div>
+          </div>
+
+          <p className="text-sm font-mono text-gray-400 mt-auto">{t.sections.cover.year}</p>
+       </div>
+
+       {/* INTRODUCTION */}
+       <div className="mb-10">
+         <h2 className="text-2xl font-bold border-b-2 border-black mb-4 pb-2 uppercase flex justify-between items-baseline">
+            {t.nav.intro}
+            <span className="text-xs font-normal text-gray-500">Section 01</span>
+         </h2>
+         <div className="prose prose-sm max-w-none text-justify mb-6">
+            {t.sections.intro.content.text.map((p, i) => (
+               <p key={i} className="mb-3">{p}</p>
+            ))}
+         </div>
+         <QuizReview questions={t.sections.intro.quiz.questions} />
+       </div>
+
+       <div className="page-break"></div>
+
+       {/* GLOBAL BREEDS */}
+       <div className="mb-10">
+         <h2 className="text-2xl font-bold border-b-2 border-black mb-4 pb-2 uppercase flex justify-between items-baseline">
+            {t.nav.global}
+            <span className="text-xs font-normal text-gray-500">Section 02</span>
+         </h2>
+         <p className="mb-4 text-sm italic">{t.sections.global.content.description}</p>
+         
+         <QuizReview questions={t.sections.global.quiz.questions} />
+
+         <div className="grid grid-cols-1 gap-6 mt-6">
+            {t.sections.global.content.breeds.map(breed => (
+               <div key={breed.id} className="border border-gray-300 p-4 rounded avoid-break flex gap-4">
+                 <div className="w-32 h-32 flex-shrink-0 bg-gray-100 border border-gray-200">
+                    {/* Placeholder for print image to save ink/render cleanly */}
+                    <img src={breed.image} alt={breed.name} className="w-full h-full object-cover grayscale opacity-80" />
+                 </div>
+                 <div className="flex-1 min-w-0">
+                    <div className="flex justify-between items-start border-b border-gray-100 pb-2 mb-2">
+                       <div>
+                          <h3 className="font-bold text-lg">{breed.name}</h3>
+                          <span className="text-xs uppercase bg-gray-100 px-2 py-0.5 rounded">{breed.type}</span>
+                       </div>
+                       <div className="text-right text-xs text-gray-500">
+                          <p><strong>Origin:</strong> {breed.origin}</p>
+                          <p><strong>Height:</strong> {breed.height}</p>
+                          <p><strong>Weight:</strong> {breed.stats.weight}</p>
+                       </div>
+                    </div>
+                    
+                    <p className="text-xs italic mb-2 text-gray-700">{breed.description}</p>
+                    
+                    <div className="grid grid-cols-2 gap-4 text-xs bg-gray-50 p-2 rounded mb-2">
+                       <div>
+                          <p><strong>{t.sections.global.content.labels.diet}:</strong> {breed.expandedInfo.diet}</p>
+                          <p className="mt-1"><strong>{t.sections.global.content.labels.diseases}:</strong> {breed.expandedInfo.diseases}</p>
+                       </div>
+                       <div>
+                          <p><strong>{t.sections.global.content.labels.breeding}:</strong> {breed.expandedInfo.breeding}</p>
+                          <p className="mt-1"><strong>{t.sections.global.content.labels.clinicalProfile}:</strong> {breed.clinicalProfile.risks} / {breed.clinicalProfile.resistance}</p>
+                       </div>
+                    </div>
+                    
+                    <div className="flex gap-2 flex-wrap text-[10px] text-gray-500">
+                       {breed.stats.milk && <span>Milk: {breed.stats.milk}</span>} | 
+                       {breed.stats.fat && <span>Fat: {breed.stats.fat}</span>} |
+                       {breed.traits.map(t => <span key={t} className="border border-gray-300 px-1 rounded">{t}</span>)}
+                    </div>
+                 </div>
+               </div>
+            ))}
+         </div>
+       </div>
+
+       <div className="page-break"></div>
+
+       {/* ALGERIA */}
+       <div className="mb-10">
+         <h2 className="text-2xl font-bold border-b-2 border-black mb-4 pb-2 uppercase flex justify-between items-baseline">
+            {t.nav.algeria}
+            <span className="text-xs font-normal text-gray-500">Section 03</span>
+         </h2>
+         
+         <div className="mb-6 bg-gray-50 p-4 border-l-4 border-black">
+            <h3 className="font-bold text-lg mb-2">{t.sections.algeria.content.title}</h3>
+            <p className="text-sm mb-2">{t.sections.algeria.content.description}</p>
+            <p className="text-xs text-justify leading-relaxed">{t.sections.algeria.content.heroExpandedText}</p>
+         </div>
+
+         <QuizReview questions={t.sections.algeria.quiz.questions} />
+         
+         <h3 className="font-bold mt-6 mb-4 uppercase text-sm border-b pb-1">{t.sections.algeria.content.subBreedsTitle}</h3>
+         <div className="grid grid-cols-1 gap-4">
+            {t.sections.algeria.content.subBreeds.map((sb, i) => (
+               <div key={i} className="border border-gray-300 p-4 rounded avoid-break">
+                  <div className="flex justify-between items-center mb-2">
+                    <h4 className="font-bold">{sb.name} <span className="text-xs font-normal text-gray-500">({sb.region})</span></h4>
+                    <span className="text-xs font-bold border px-2 py-0.5 rounded">{sb.status}</span>
+                  </div>
+                  <p className="text-xs mb-3 text-gray-700">{sb.features}</p>
+                  
+                  <div className="grid grid-cols-3 gap-2 text-xs mb-3 border-t border-b py-2 bg-gray-50">
+                     <div className="text-center"><strong>{t.sections.algeria.content.labels.height}:</strong> {sb.height}</div>
+                     <div className="text-center border-l border-r border-gray-200"><strong>{t.sections.algeria.content.labels.weight}:</strong> {sb.weight}</div>
+                     <div className="text-center"><strong>{t.sections.algeria.content.labels.population}:</strong> {sb.population}</div>
+                  </div>
+
+                  <div className="text-xs grid grid-cols-1 gap-1">
+                     <p><strong>{t.sections.algeria.content.labels.diet}:</strong> {sb.expandedInfo.diet}</p>
+                     <p><strong>{t.sections.algeria.content.labels.diseases}:</strong> {sb.expandedInfo.diseases}</p>
+                     <p><strong>{t.sections.algeria.content.labels.breeding}:</strong> {sb.expandedInfo.breeding}</p>
+                  </div>
+               </div>
+            ))}
+         </div>
+       </div>
+
+       <div className="page-break"></div>
+
+       {/* COMPARISON TABLE */}
+       <div className="mb-10">
+          <h2 className="text-2xl font-bold border-b-2 border-black mb-4 pb-2 uppercase flex justify-between items-baseline">
+            {t.nav.compare}
+            <span className="text-xs font-normal text-gray-500">Section 04</span>
+         </h2>
+         <table className="w-full text-xs text-left border-collapse border border-gray-300">
+            <thead>
+               <tr className="bg-gray-100">
+                  <th className="border p-2">{t.sections.compare.labels.tableHeader[0]}</th>
+                  <th className="border p-2">{t.sections.compare.labels.tableHeader[1]}</th>
+                  <th className="border p-2">{t.sections.compare.labels.tableHeader[2]}</th>
+                  <th className="border p-2">{t.sections.compare.labels.tableHeader[3]}</th>
+                  <th className="border p-2">{t.sections.compare.labels.tableHeader[4]}</th>
+                  <th className="border p-2">{t.sections.compare.labels.cost}</th>
+               </tr>
+            </thead>
+            <tbody>
+               {t.sections.compare.data.map(d => (
+                  <tr key={d.id}>
+                     <td className="border p-2 font-bold">{d.name}</td>
+                     <td className="border p-2">{d.milkIndex}</td>
+                     <td className="border p-2">{d.fatIndex}</td>
+                     <td className="border p-2">{t.sections.global.content.breeds.find(b => b.id === d.id)?.stats.protein || '-'}</td>
+                     <td className="border p-2">{d.adaptationIndex}</td>
+                     <td className="border p-2">{d.maintenanceCost}</td>
+                  </tr>
+               ))}
+            </tbody>
+         </table>
+       </div>
+
+       {/* CONCLUSION */}
+       <div className="mb-10 avoid-break">
+         <h2 className="text-2xl font-bold border-b-2 border-black mb-4 pb-2 uppercase flex justify-between items-baseline">
+            {t.nav.conclusion}
+            <span className="text-xs font-normal text-gray-500">Section 05</span>
+         </h2>
+         
+         <QuizReview questions={t.sections.conclusion.quiz.questions} />
+
+         <div className="bg-gray-50 p-6 rounded border border-gray-200 mt-4">
+            <h3 className="font-bold text-lg mb-4 text-center">{t.sections.conclusion.report.title}</h3>
+            {t.sections.conclusion.report.message.map((p, i) => (
+               <p key={i} className="mb-2 text-justify text-sm leading-relaxed">{p}</p>
+            ))}
+         </div>
+       </div>
+
+       <div className="text-center text-[10px] text-gray-400 mt-12 border-t pt-4">
+         Generated via Interactive Veterinary Ethnology Application - {new Date().getFullYear()} <br/>
+         University of Laghouat - Department of Veterinary Sciences
+       </div>
     </div>
   );
 };
@@ -329,8 +553,15 @@ const App: React.FC = () => {
   };
 
   return (
-    <div dir={t.direction} className="min-h-screen flex font-sans text-slate-200 bg-thesis-gradient">
-      <GlossaryModal isOpen={showGlossary} onClose={() => setShowGlossary(false)} title={t.glossary.title} terms={t.glossary.terms} />
+    <>
+    <div dir={t.direction} className="min-h-screen flex font-sans text-slate-200 bg-thesis-gradient print:hidden">
+      <GlossaryModal 
+        isOpen={showGlossary} 
+        onClose={() => setShowGlossary(false)} 
+        title={t.glossary.title} 
+        terms={t.glossary.terms} 
+        closeLabel={t.ui.closeBtn}
+      />
       
       {/* Zoom Modal */}
       {zoomedBreed && (
@@ -374,11 +605,6 @@ const App: React.FC = () => {
              <Microscope size={48} className="text-academic-accent" />
           </div>
           <h1 className="font-heading font-bold text-xl leading-tight text-white mb-2">{t.header.subtitle}</h1>
-          <div className="flex justify-center gap-2 flex-wrap">
-            {t.header.badges.map(b => (
-              <span key={b} className="text-[10px] bg-academic-primary/20 text-blue-300 px-2 py-1 rounded border border-blue-500/20">{b}</span>
-            ))}
-          </div>
         </div>
 
         <nav className="flex-1 py-4 overflow-y-auto">
@@ -479,13 +705,18 @@ const App: React.FC = () => {
                  data={t.sections.intro.quiz} 
                  onComplete={() => setUnlocked(p => ({...p, intro: true}))}
                  onScore={(s) => setTotalScore(p => p + s)}
+                 labels={t.quizLabels}
                />
              ) : (
                <div className="animate-slide-up space-y-12">
                   <div className="glass-panel p-6 md:p-10 rounded-3xl border border-white/10 relative overflow-hidden">
                      <div className="absolute top-0 right-0 w-64 h-64 bg-academic-primary/10 rounded-full blur-3xl -z-10"></div>
                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">{t.sections.intro.content.title}</h3>
-                     <p className="text-base md:text-lg text-slate-300 leading-loose">{t.sections.intro.content.text}</p>
+                     <div className="text-base md:text-lg text-slate-300 leading-loose space-y-4">
+                       {t.sections.intro.content.text.map((paragraph, index) => (
+                         <p key={index}>{paragraph}</p>
+                       ))}
+                     </div>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-8">
@@ -520,6 +751,7 @@ const App: React.FC = () => {
                   data={t.sections.global.quiz} 
                   onComplete={() => setUnlocked(p => ({...p, global: true}))}
                   onScore={(s) => setTotalScore(p => p + s)}
+                  labels={t.quizLabels}
                 />
              ) : (
                 <div className="animate-slide-up space-y-16">
@@ -559,6 +791,7 @@ const App: React.FC = () => {
                 data={t.sections.algeria.quiz} 
                 onComplete={() => setUnlocked(p => ({...p, algeria: true, compare: true}))}
                 onScore={(s) => setTotalScore(p => p + s)}
+                labels={t.quizLabels}
               />
             ) : (
                <div className="animate-slide-up space-y-16">
@@ -782,6 +1015,7 @@ const App: React.FC = () => {
                       data={t.sections.conclusion.quiz}
                       onComplete={() => setUnlocked(p => ({...p, conclusion: true}))}
                       onScore={(s) => setTotalScore(p => p + s)}
+                      labels={t.quizLabels}
                     />
                  </div>
               ) : (
@@ -789,7 +1023,6 @@ const App: React.FC = () => {
                     <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-academic-accent to-transparent"></div>
                     <Award size={80} className="mx-auto text-academic-accent mb-8 animate-pulse-slow drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]" />
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">{t.sections.conclusion.report.title}</h2>
-                    <p className="text-slate-400 mb-10 uppercase tracking-widest text-sm">Official Assessment Record</p>
                     
                     <div className="inline-block p-8 rounded-full bg-slate-900 border-4 border-academic-primary/30 mb-8">
                        <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-academic-accent to-yellow-200">
@@ -802,10 +1035,14 @@ const App: React.FC = () => {
                        <p className="text-2xl text-white font-bold">{totalScore > 6 ? "Senior Research Fellow" : "Research Associate"}</p>
                     </div>
 
-                    <p className="text-slate-300 max-w-md mx-auto leading-relaxed border-t border-white/10 pt-6">{t.sections.conclusion.report.message}</p>
+                    <div className="border-t border-white/10 pt-6 space-y-4">
+                       {t.sections.conclusion.report.message.map((msg, i) => (
+                         <p key={i} className="text-slate-300 max-w-md mx-auto leading-relaxed">{msg}</p>
+                       ))}
+                    </div>
 
-                    <button onClick={() => window.print()} className="mt-12 px-10 py-3 border border-white/20 hover:bg-white/10 hover:border-white/40 rounded-full text-sm font-bold transition-all uppercase tracking-widest">
-                       Print Official Transcript
+                    <button onClick={() => window.print()} className="mt-12 px-10 py-3 border border-white/20 hover:bg-white/10 hover:border-white/40 rounded-full text-sm font-bold transition-all uppercase tracking-widest flex items-center gap-2 mx-auto">
+                       <Printer size={16} /> {t.ui.printBtn}
                     </button>
                  </div>
               )}
@@ -814,6 +1051,10 @@ const App: React.FC = () => {
 
       </main>
     </div>
+    
+    {/* Hidden Print Container */}
+    <PrintableReport lang={lang} />
+    </>
   );
 };
 

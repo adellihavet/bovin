@@ -1,15 +1,16 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { CheckCircle2, XCircle, Lightbulb, ArrowRight } from 'lucide-react';
-import { QuizQuestion } from '../types';
+import { QuizQuestion, QuizLabels } from '../types';
 
 interface QuizProps {
   data: { title: string; questions: QuizQuestion[] };
   onComplete: () => void;
   onScore: (score: number) => void;
+  labels: QuizLabels;
 }
 
-const Quiz: React.FC<QuizProps> = ({ data, onComplete, onScore }) => {
+const Quiz: React.FC<QuizProps> = ({ data, onComplete, onScore, labels }) => {
   const [currentQIndex, setCurrentQIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -61,7 +62,7 @@ const Quiz: React.FC<QuizProps> = ({ data, onComplete, onScore }) => {
             {data.title}
           </h3>
           <span className="text-slate-500 text-sm font-mono bg-black/20 px-3 py-1 rounded-full">
-            {currentQIndex + 1} / {data.questions.length}
+            {labels.question} {currentQIndex + 1} / {data.questions.length}
           </span>
         </div>
 
@@ -73,7 +74,7 @@ const Quiz: React.FC<QuizProps> = ({ data, onComplete, onScore }) => {
         {/* Options */}
         <div className="space-y-4">
           {currentQ.options.map((opt) => {
-            let baseClass = "w-full p-5 rounded-xl border-2 text-right transition-all duration-300 flex items-center justify-between group relative overflow-hidden ";
+            let baseClass = "w-full p-5 rounded-xl border-2 transition-all duration-300 flex items-center justify-between group relative overflow-hidden ";
             
             if (isAnswered) {
               if (opt.isCorrect) baseClass += "border-green-500 bg-green-900/20 text-green-100";
@@ -91,7 +92,7 @@ const Quiz: React.FC<QuizProps> = ({ data, onComplete, onScore }) => {
                 disabled={isAnswered}
                 className={baseClass}
               >
-                <span className="text-lg font-medium relative z-10">{opt.text}</span>
+                <span className="text-lg font-medium relative z-10 mx-2">{opt.text}</span>
                 {isAnswered && opt.isCorrect && <CheckCircle2 className="text-green-400 relative z-10" />}
                 {isAnswered && !opt.isCorrect && selectedOption === opt.id && <XCircle className="text-red-400 relative z-10" />}
               </button>
@@ -105,7 +106,7 @@ const Quiz: React.FC<QuizProps> = ({ data, onComplete, onScore }) => {
             <div className={`p-6 rounded-2xl mb-8 ${feedback?.isCorrect ? 'bg-green-950/40 border border-green-500/30' : 'bg-red-950/40 border border-red-500/30'}`}>
               <p className="text-slate-200 leading-relaxed text-lg">
                 <strong className={`block mb-2 text-xl ${feedback?.isCorrect ? 'text-green-400' : 'text-red-400'}`}>
-                  {feedback?.isCorrect ? 'Excellent Analysis!' : 'Incorrect Assessment'}
+                  {feedback?.isCorrect ? labels.excellentAnalysis : labels.incorrectAssessment}
                 </strong>
                 {feedback?.text}
               </p>
@@ -115,8 +116,8 @@ const Quiz: React.FC<QuizProps> = ({ data, onComplete, onScore }) => {
               onClick={handleNext}
               className="w-full py-4 bg-gradient-to-r from-academic-primary to-blue-600 hover:to-blue-500 rounded-xl font-bold text-white text-lg shadow-lg hover:shadow-blue-500/30 transition-all flex items-center justify-center gap-3"
             >
-              {isLastQuestion ? 'Complete Section & Unlock Research' : 'Next Question'}
-              <ArrowRight />
+              {isLastQuestion ? labels.completeSelection : labels.nextQuestion}
+              <ArrowRight className="rtl:rotate-180" />
             </button>
           </div>
         )}
@@ -127,7 +128,7 @@ const Quiz: React.FC<QuizProps> = ({ data, onComplete, onScore }) => {
             disabled={!selectedOption}
             className="mt-10 w-full py-4 bg-slate-800 border border-white/10 rounded-xl font-bold text-slate-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-700 hover:text-white transition-all"
           >
-            Confirm Selection
+            {labels.confirmSelection}
           </button>
         )}
       </div>

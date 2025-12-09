@@ -1,3 +1,4 @@
+
 import { TranslationContent } from './types';
 
 export const IMAGES = {
@@ -26,10 +27,26 @@ export const CONTENT: Record<string, TranslationContent> = {
       "قسم العلوم البيطرية"
     ],
     header: {
-      title: "دراسة إثنولوجية معمقة لسلالات الماشية",
-      subtitle: "بحث أكاديمي: الواقع، التحديات، والآفاق",
-      badges: ["ماستر 2026", "علم الجينوم", "الأمن الغذائي"],
+      title: "أنواع الأبقار في العالم و الجزائر",
+      subtitle: "بحث موجه لطلبة السنة الأولى بيطرة",
       glossaryBtn: "المصطلحات العلمية"
+    },
+    ui: {
+      printBtn: "طباعة البحث كاملاً",
+      closeBtn: "إغلاق",
+      printTitle: "تقرير البحث الأكاديمي"
+    },
+    quizLabels: {
+      nextQuestion: "السؤال التالي",
+      completeSelection: "إكمال الاختبار وفتح المحتوى",
+      confirmSelection: "تأكيد الإجابة",
+      correctFeedback: "إجابة صحيحة",
+      incorrectFeedback: "إجابة خاطئة",
+      excellentAnalysis: "تحليل ممتاز!",
+      incorrectAssessment: "تقييم غير دقيق",
+      question: "السؤال",
+      explanation: "الشرح العلمي",
+      correctAnswer: "الإجابة الصحيحة"
     },
     nav: {
       cover: "الرئيسية",
@@ -37,7 +54,7 @@ export const CONTENT: Record<string, TranslationContent> = {
       global: "السلالات العالمية",
       algeria: "السلالات المحلية",
       compare: "مقارنة تقنية",
-      conclusion: "التقييم النهائي"
+      conclusion: "الخاتمة"
     },
     glossary: {
       title: "قاموس المصطلحات البيطرية والإثنولوجية",
@@ -52,8 +69,8 @@ export const CONTENT: Record<string, TranslationContent> = {
     },
     sections: {
       cover: {
-        title: "دراسة تحليلية مقارنة لسلالات الماشية في الجزائر والعالم",
-        preparedBy: "من إعداد الطلبة الباحثين:",
+        title: "أنواع الأبقار في العالم و الجزائر: دراسة مقارنة",
+        preparedBy: "إعداد الطالبين:",
         students: ["أحمد رياض دليحة", "منى لخذاري"],
         supervisor: "تحت إشراف هيئة التدريس",
         year: "السنة الجامعية: 2025 / 2026",
@@ -61,63 +78,74 @@ export const CONTENT: Record<string, TranslationContent> = {
       },
       intro: {
         title: "الأسس النظرية للإثنولوجيا",
-        subtitle: "التطور التاريخي والتصنيف الفيلوجيني",
+        subtitle: "مدخل لطلبة العلوم البيطرية",
         quiz: {
-          title: "بوابة المعرفة الأساسية",
+          title: "تقييم المكتسبات القبلية",
           questions: [
             {
               id: "i1",
-              text: "ما هو الغرض الأساسي من علم الإثنولوجيا الحيوانية؟",
-              explanation: "الإثنولوجيا تدرس العلاقة بين الوراثة والبيئة وتاريخ التدجين لفهم قدرات السلالة.",
-              options: [{ id: "a", text: "دراسة الشكل الخارجي فقط", isCorrect: false }, { id: "b", text: "دراسة الأصول والتطور والتكيف البيئي", isCorrect: true }]
+              text: "بصفتك طبيباً بيطرياً مستقبلياً، ما هو الفرق الجوهري بين أبقار الحليب وأبقار اللحم؟",
+              explanation: "الفرق يكمن في تحويل الطاقة: أبقار الحليب تحول الغذاء إلى إنتاج لبني (شكل مثلثي)، بينما أبقار اللحم تخزنه كعضلات ودهون (شكل مستطيل).",
+              options: [{ id: "a", text: "اللون فقط", isCorrect: false }, { id: "b", text: "الاستقلاب وشكل الجسم", isCorrect: true }]
             },
             {
               id: "i2",
-              text: "ينقسم البقر المستأنس عالمياً إلى فرعين رئيسيين هما:",
-              explanation: "Bos taurus (الأوروبي) و Bos indicus (الآسيوي ذو السنام) هما الأفرع الرئيسية.",
-              options: [{ id: "a", text: "اللاحم والحلوب", isCorrect: false }, { id: "b", text: "Bos taurus & Bos indicus", isCorrect: true }]
+              text: "ما هي الأهمية الطبية لمعرفة السلالة؟",
+              explanation: "السلالة تحدد الأمراض الوراثية المحتملة وطريقة التعامل الدوائي والغذائي.",
+              options: [{ id: "a", text: "مجرد تصنيف أكاديمي", isCorrect: false }, { id: "b", text: "تحديد القابلية للأمراض والاحتياجات", isCorrect: true }]
             }
           ]
         },
         content: {
-          title: "مفهوم التدجين والتطور",
-          text: "بدأت عملية تدجين الماشية قبل حوالي 10,500 سنة في الهلال الخصيب. أدى هذا المسار الطويل إلى تمايز وراثي هائل استجابةً للظروف المناخية.",
+          title: "لماذا ندرس السلالات؟",
+          text: [
+            "أعزائي طلبة السنة الأولى، إن التمييز بين السلالات ليس ترفاً معرفياً، بل هو حجر الزاوية في التشخيص الطبي (Clinical Diagnosis). يختلف 'Bos taurus' (الأبقار الأوروبية) عن 'Bos indicus' (الزيبو) في التشريح، المناعة، وحتى الاستجابة للأدوية. إن فهم هذه الفروقات يمكن الطبيب البيطري من توقع المشاكل الصحية قبل حدوثها، فمثلاً سلالات الحليب عالية الإنتاج تكون عرضة لأمراض التمثيل الغذائي، بينما تعاني سلالات اللحم الضخمة من مشاكل عسر الولادة.",
+            "علاوة على ذلك، تلعب البيئة دوراً حاسماً في تشكيل النمط الظاهري. السلالات المحلية في الجزائر طورت آليات فسيولوجية فريدة لمقاومة الجفاف والحرارة، وهو ما يعرف بالتكيف الجيني. دراسة هذه الآليات تفتح آفاقاً لفهم كيفية تحسين الإنتاج الحيواني دون الإخلال بالتوازن البيئي، وهو جوهر علم الإنتاج الحيواني (Zootechnie) الذي ستتخصصون فيه لاحقاً."
+          ],
           cards: [
-            { title: "Bos taurus", desc: "سلالات المناطق المعتدلة. نضج مبكر وإنتاجية عالية.", icon: "T" },
-            { title: "Bos indicus", desc: "سلالات المناطق الحارة (الزيبو). مقاومة للطفيليات.", icon: "I" }
+            { title: "النمط الظاهري", desc: "دراسة الشكل الخارجي (Morphology) لتحديد الغرض الإنتاجي (حليب/لحم).", icon: "M" },
+            { title: "التكيف البيئي", desc: "فهم كيف طورت كل سلالة آليات فسيولوجية لمقاومة الحرارة أو البرد.", icon: "A" }
           ]
         }
       },
       global: {
         title: "أطلس السلالات العالمية",
-        subtitle: "الخصائص السريرية والإنتاجية",
+        subtitle: "الفروقات المورفولوجية والإنتاجية",
         quiz: {
           title: "اختبار المعرفة الإنتاجية",
           questions: [
             {
               id: "g1",
-              text: "أي سلالة تعتبر 'مصنع الحليب' الأول في العالم؟",
-              explanation: "هولشتاين فريزيان هي السلالة المهيمنة عالمياً بإنتاج يتجاوز 10,000 لتر.",
-              options: [{ id: "a", text: "المونبيليارد", isCorrect: false }, { id: "b", text: "هولشتاين", isCorrect: true }]
+              text: "أي سلالة تتميز بـ 'عروق اللبن' البارزة جداً؟",
+              explanation: "هولشتاين فريزيان؛ العروق البارزة دليل على تدفق دم هائل للضرع لإنتاج الحليب.",
+              options: [{ id: "a", text: "شاروليه", isCorrect: false }, { id: "b", text: "هولشتاين", isCorrect: true }]
             },
             {
               id: "g2",
-              text: "لماذا تفضل سلالة 'أنجوس' في إنتاج اللحوم؟",
-              explanation: "تتميز بقدرتها العالية على 'الترخيم' (Marbling) وجودة اللحم.",
-              options: [{ id: "a", text: "لكبر عظامها", isCorrect: false }, { id: "b", text: "لجودة اللحم والترخيم", isCorrect: true }]
+              text: "ما هي العلامة المميزة لسلالة 'نورماند' الفرنسية؟",
+              explanation: "تتميز بوجود 'نظارات' (بقع داكنة حول العين) تحميها من أشعة الشمس.",
+              options: [{ id: "a", text: "السنام", isCorrect: false }, { id: "b", text: "النظارات حول العين", isCorrect: true }]
             }
           ]
         },
         content: {
           title: "السلالات الاقتصادية الكبرى",
-          description: "دراسة تفصيلية لأهم السلالات المؤثرة في الاقتصاد العالمي للإنتاج الحيواني.",
+          description: "تحليل معمق للخصائص التشريحية التي تميز كل سلالة، موجه للعين البيطرية الفاحصة.",
           readMore: "اقرأ المزيد",
           showLess: "إخفاء التفاصيل",
           labels: {
             color: "اللون",
             height: "الارتفاع",
             weight: "الوزن",
-            origin: "المنشأ"
+            origin: "المنشأ",
+            clinicalProfile: "الملف الطبي",
+            diet: "التغذية والنظام الغذائي",
+            diseases: "الأمراض الشائعة",
+            breeding: "نظام التربية والانتخاب",
+            traits: "الصفات المميزة",
+            risks: "المخاطر",
+            resistance: "المقاومة",
+            reproductive: "التناسل"
           },
           breeds: [
             {
@@ -130,16 +158,18 @@ export const CONTENT: Record<string, TranslationContent> = {
               image: IMAGES.holstein,
               stats: { milk: "10,000+ كغ", fat: "3.7%", protein: "3.2%", weight: "650 كغ" },
               clinicalProfile: { risks: "التهاب الضرع، العرج، انزياح المنفحة", resistance: "ضعيفة للمناخ الحار", reproductive: "صعوبة ولادة متوسطة" },
-              description: "السلالة الأكثر انتشاراً عالمياً. تتطلب إدارة بيطرية دقيقة جداً وتغذية مركزة.",
-              traits: ["إنتاج غزير", "تطلب غذائي عالي", "حساسة بيئياً"],
+              description: "النموذج المثالي للبقرة الحلوب. تتميز بشكلها 'المثلثي' الحاد، مما يدل على تحويل كل الطاقة إلى حليب وليس دهون.",
+              traits: ["إنتاج غزير", "تطلب غذائي عالي", "هيكل زاوي"],
               expandedInfo: {
-                diet: "نظام غذائي عالي الطاقة (TMR) يعتمد على السيلاج والمركزات لتلبية متطلبات الإنتاج العالي (16-18 MJ/kg).",
-                diseases: "عرضة لأمراض التمثيل الغذائي (حمى الحليب، الكيتوزية) بسبب الإنتاج العالي.",
-                breeding: "تلقيح اصطناعي مكثف باستخدام ثيران مختبرة جينياً لتحسين إنتاج الحليب وشكل الضرع."
+                diet: "نظام غذائي عالي الطاقة (TMR). أي نقص يؤدي فوراً إلى الهزال (Body Condition Score loss).",
+                diseases: "التهاب الضرع (Mastitis) هو التحدي الأول بسبب حجم الضرع وقرب الحلمات من الأرض.",
+                breeding: "يتم انتخابها وراثياً لزاوية الضلوع وسعة الضرع الخلفي."
               },
               hotspots: [
-                { x: 50, y: 75, label: "الضرع", text: "ضرع ضخم وعروق لبنية بارزة لدعم الإنتاج الغزير." },
-                { x: 20, y: 40, label: "الجسم", text: "هيكل زاوي (مثلثي) يشير إلى تحويل العلف إلى حليب وليس لحم." }
+                { x: 55, y: 70, label: "الضرع الخلفي", text: "ارتفاع وعرض الضرع الخلفي (Rear Udder Attachment) دليل على السعة الإنتاجية الهائلة." },
+                { x: 50, y: 80, label: "عروق الحليب", text: "الأوردة اللبنية (Mammary Veins) المتعرجة والبارزة: مؤشر حيوي على كمية الدم المتدفقة للضرع." },
+                { x: 20, y: 40, label: "الزوايا العظمية", text: "بروز عظام الحوض والكتف (Angularity) يعكس طبع الحليب (Dairy Character) وعدم تخزين الدهون." },
+                { x: 85, y: 85, label: "الأرجل الخلفية", text: "وضعية الأرجل (Rear Legs View) يجب أن تكون مستقيمة وواسعة لاستيعاب ضرع ضخم." }
               ]
             },
             {
@@ -152,16 +182,18 @@ export const CONTENT: Record<string, TranslationContent> = {
               image: IMAGES.montbeliarde,
               stats: { milk: "7,500 كغ", fat: "3.9%", protein: "3.45%", weight: "700 كغ" },
               clinicalProfile: { risks: "مقاومة جيدة للتهاب الضرع", resistance: "صلابة بدنية عالية", reproductive: "خصوبة ممتازة" },
-              description: "مثالية لصناعة الأجبان بفضل بروتين الكازين بيتا.",
+              description: "توازن بيولوجي رائع. هيكل عظمي أقوى من الهولشتاين يسمح لها بتحمل المراعي الجبلية مع إنتاج حليب غني.",
               traits: ["جبنة ممتازة", "صلابة بدنية", "طول عمر"],
               expandedInfo: {
-                diet: "مرنة؛ تزدهر على المراعي العشبية والقش، ويمكنها تحويل الأعلاف الخشنة بكفاءة.",
-                diseases: "مقاومة نسبياً لالتهاب الضرع بفضل صحة الضرع الجيدة، أقل عرضة للعرج.",
-                breeding: "تربية تركز على جودة البروتين (Kappa Casein B) لإنتاج الأجبان الفرنسية الراقية (Comté)."
+                diet: "قدرة عالية على هضم الأعلاف الخشنة (Roughage) بفضل كرش متطور.",
+                diseases: "أقل عرضة للعرج ومشاكل الحوافر مقارنة بالهولشتاين.",
+                breeding: "تركز على جودة الكازين (بروتين الجبن) وقوة الأربطة."
               },
               hotspots: [
-                { x: 50, y: 50, label: "الصلابة", text: "بنية عضلية قوية تجعلها مناسبة للإنتاج المختلط." },
-                { x: 30, y: 30, label: "الرأس", text: "رأس أبيض مميز (Tête Blanche) وهو علامة السلالة." }
+                { x: 85, y: 20, label: "الرأس الأبيض", text: "الرأس الأبيض (Tête Blanche) هو العلامة المميزة للنقاوة العرقية لهذه السلالة." },
+                { x: 40, y: 50, label: "عرض الصدر", text: "صدر عريض وعميق يوفر سعة كبيرة للقلب والرئتين، مما يعزز النشاط والتحمل." },
+                { x: 60, y: 70, label: "رباط الضرع", text: "رباط وسطي قوي (Suspensory Ligament) يرفع الضرع ويحميه من الإصابات في المراعي." },
+                { x: 20, y: 60, label: "الردف", text: "ردف مائل قليلاً يسهل عملية الولادة ويقلل من حالات عسر الولادة." }
               ]
             },
             {
@@ -174,16 +206,18 @@ export const CONTENT: Record<string, TranslationContent> = {
               image: IMAGES.brahman,
               stats: { milk: "منخفض", fat: "4.5%", protein: "3.6%", weight: "500-800 كغ" },
               clinicalProfile: { risks: "قليلة الأمراض", resistance: "عالية جداً للقراد والحرارة", reproductive: "نضج متأخر قليلاً" },
-              description: "سنام مميز وغدد عرقية كثيفة تجعلها سيدة المناطق الحارة.",
+              description: "معجزة التكيف الحراري. تمتلك فيزيولوجيا مختلفة تماماً عن الأبقار الأوروبية تسمح لها بالعيش في المناطق الاستوائية.",
               traits: ["مقاومة الحرارة", "مقاومة الطفيليات", "لحم قليل الدهون"],
               expandedInfo: {
-                diet: "قادرة على هضم الأعلاف الاستوائية منخفضة الجودة والألياف العالية بكفاءة.",
-                diseases: "جلد سميك ومتحرك يمنع لدغات الحشرات، ومقاومة طبيعية للتريبانوسوميات والقراد.",
-                breeding: "تستخدم بكثرة في برامج التهجين (F1) لإضافة الصلابة الهجينة للسلالات الأوروبية في المناطق الحارة."
+                diet: "أيض (Metabolism) بطيء يسمح لها بالاستفادة من أفقر أنواع النباتات.",
+                diseases: "تفرز مادة زيتية من الجلد تنفر الحشرات والقراد.",
+                breeding: "تستخدم لإنتاج هجائن الـ F1 التي تجمع بين جودة اللحم الأوروبي ومقاومة الزيبو."
               },
               hotspots: [
-                { x: 30, y: 20, label: "السنام", text: "كتلة عضلية ودهنية تساعد في تخزين الطاقة وتنظيم الحرارة." },
-                { x: 45, y: 60, label: "الجلد (اللبب)", text: "جلد مترهل يزيد مساحة السطح لتبريد الجسم بفعالية." }
+                { x: 30, y: 20, label: "السنام العضلي", text: "كتلة من الأنسجة العضلية والدهنية تستخدم كمخزون للطاقة عند شح الغذاء." },
+                { x: 45, y: 55, label: "اللبب (Dewlap)", text: "جلد متدلي لزيادة مساحة السطح (Surface Area) وتشتيت الحرارة بفعالية." },
+                { x: 85, y: 30, label: "الأذن المتدلية", text: "أذن كبيرة متدلية تعمل كمروحة تبريد وتمنع دخول الحشرات بفضل الشعر الكثيف." },
+                { x: 60, y: 50, label: "الجلد المتحرك", text: "عضلة جلدية (Panniculus muscle) متطورة جداً تسمح بهز الجلد لطرد الذباب." }
               ]
             },
             {
@@ -196,16 +230,17 @@ export const CONTENT: Record<string, TranslationContent> = {
               image: IMAGES.jersey,
               stats: { milk: "6,000 كغ", fat: "5.4%", protein: "3.9%", weight: "450 كغ" },
               clinicalProfile: { risks: "حمى الحليب (Hypocalcemia)", resistance: "تحمل جيد للحرارة، حوافر صلبة", reproductive: "سهولة ولادة ممتازة" },
-              description: "أصغر السلالات الحلوب حجماً ولكنها الأكثر كفاءة في تحويل العلف إلى دسم.",
+              description: "أصغر سلالة حلوب. تشتهر بذكائها، وعيونها الكبيرة، وكفاءتها العالية في إنتاج المواد الصلبة لكل كيلوغرام من العلف.",
               traits: ["دسم عالي", "سهولة ولادة", "كفاءة تحويل"],
               expandedInfo: {
-                diet: "تتطلب علفاً عالي الكثافة الطاقوية نظراً لصغر حجم الكرش، حساسة لنقص الكالسيوم.",
-                diseases: "أكثر عرضة لحمى الحليب بعد الولادة مباشرة بسبب ارتفاع تركيز الكالسيوم في اللبأ.",
-                breeding: "مفضلة جداً لتلقيح العجلات (Bakers) نظراً لصغر حجم المواليد وسهولة الولادة."
+                diet: "بسبب صغر حجم الكرش، تحتاج علفاً مركزاً جداً.",
+                diseases: "استقلاب الكالسيوم حساس جداً، مما يجعلها عرضة لشلل الولادة (Milk Fever).",
+                breeding: "خيار ممتاز لتلقيح العجلات (Heifers) لتجنب عسر الولادة."
               },
               hotspots: [
-                { x: 50, y: 50, label: "الحجم", text: "حجم صغير يقلل تكلفة الصيانة ويزيد كفاءة التحويل." },
-                { x: 30, y: 30, label: "العيون", text: "عيون كبيرة وبارزة تميز السلالة." }
+                { x: 80, y: 25, label: "العيون الجاحظة", text: "محجر عين بارز وعيون كبيرة داكنة، سمة جمالية ووظيفية للرؤية المحيطية." },
+                { x: 50, y: 50, label: "حجم الجسم", text: "جسم صغير يقلل من الطاقة اللازمة للصيانة (Maintenance Energy)، مما يرفع الربحية." },
+                { x: 30, y: 80, label: "الحوافر السوداء", text: "حوافر صلبة جداً وداكنة تتحمل الأرضيات الصلبة والمشي لمسافات طويلة." }
               ]
             },
             {
@@ -218,16 +253,18 @@ export const CONTENT: Record<string, TranslationContent> = {
               image: IMAGES.angus,
               stats: { milk: "منخفض", fat: "عالٍ (مرخم)", protein: "جودة عضلية", weight: "800-1000 كغ" },
               clinicalProfile: { risks: "مشاكل وراثية نادرة", resistance: "مقاومة للبرد، بدون قرون", reproductive: "سهولة ولادة ونضج مبكر" },
-              description: "السلالة الأولى عالمياً لإنتاج اللحم الفاخر (Premium Beef) بفضل خاصية الترخيم.",
+              description: "أسطورة الستيك. شكلها أسطواني مكتنز، مما يعني هدراً أقل في العظام والأحشاء وزيادة في نسبة اللحم الصافي.",
               traits: ["جودة اللحم", "بدون قرون", "نضج مبكر"],
               expandedInfo: {
-                diet: "تستجيب جيداً للتسمين بالحبوب (Grain-finished) للحصول على درجة ترخيم عالية.",
-                diseases: "يجب مراقبة الأمراض الوراثية المتنحية (مثل AM).",
-                breeding: "الخيار الأول في برامج التسمين لإنتاج لحوم الستيك عالية الجودة."
+                diet: "قابلية عالية للتسمين السريع (Finishing) وتكوين الدهون داخل العضلات.",
+                diseases: "جين (Polled) السائد يجعلها تولد بدون قرون، مما يقلل الإصابات في القطيع.",
+                breeding: "سهولة الولادة تجعلها الخيار الأول للمبتدئين في تربية أبقار اللحم."
               },
               hotspots: [
-                { x: 50, y: 50, label: "الجسم", text: "جسم اسطواني ممتلئ باللحم." },
-                { x: 80, y: 50, label: "الأرداف", text: "عضلات خلفية ممتلئة تعطي قطع لحم ممتازة." }
+                { x: 88, y: 15, label: "غياب القرون", text: "صفة وراثية سائدة (Polled). الرأس نظيف ومستدير، مما يسهل الولادة والتعامل." },
+                { x: 50, y: 40, label: "خط الظهر", text: "ظهر مستقيم وعريض ومكتنز باللحم (Ribeye area)، وهو أغلى قطع اللحم." },
+                { x: 20, y: 50, label: "الفخذ الممتلئ", text: "تطور عضلي كبير في الربع الخلفي دون دهون خارجية مفرطة." },
+                { x: 50, y: 60, label: "الترخيم", text: "القدرة البيولوجية الفريدة على ترسب الدهون داخل الألياف العضلية (Intramuscular Fat)." }
               ]
             },
             {
@@ -240,16 +277,18 @@ export const CONTENT: Record<string, TranslationContent> = {
               image: IMAGES.simmental,
               stats: { milk: "7,000 كغ", fat: "4.0%", protein: "3.5%", weight: "700-900 كغ" },
               clinicalProfile: { risks: "عسر ولادة (عجول ضخمة)", resistance: "تأقلم جبلي ممتاز", reproductive: "خصوبة جيدة، توائم شائعة" },
-              description: "سلالة قوية البنية، تجمع بين إنتاج الحليب الجيد والنمو العضلي السريع للعجول.",
+              description: "الدبابة السويسرية. ضخامة الجسم تعني استهلاكاً عالياً للعلف، لكن المردود مزدوج: حليب وفير وعجول تسمين ممتازة.",
               traits: ["نمو سريع", "حليب دسم", "بنية قوية"],
               expandedInfo: {
-                diet: "تتطلب كميات كبيرة من العلف (High Intake Capacity) للحفاظ على حجمها وإنتاجها.",
-                diseases: "معدلات التهاب ضرع منخفضة، لكن يجب الحذر من مشاكل الأقدام في الأرضيات الصلبة.",
-                breeding: "شائعة جداً في أوروبا لإنتاج عجول تسمين ممتازة مع الحفاظ على دخل من الحليب."
+                diet: "شهية مفتوحة جداً (High Intake). تصلح للمزارع التي تتوفر فيها الأعلاف بكثرة.",
+                diseases: "صحة الضرع جيدة عموماً.",
+                breeding: "تشتهر بارتفاع نسبة ولادة التوائم مقارنة بالسلالات الأخرى."
               },
               hotspots: [
-                { x: 50, y: 50, label: "الهيكل", text: "هيكل عظمي قوي وعضلات بارزة." },
-                { x: 50, y: 70, label: "الإنتاج", text: "توازن جيد بين الضرع واللحم." }
+                { x: 40, y: 45, label: "القفص الصدري", text: "سعة بطن وصدر هائلة لاستيعاب كميات كبيرة من العلف الخشن." },
+                { x: 80, y: 20, label: "الرأس العريض", text: "رأس قوي وعريض يعكس القوة الهيكلية العامة للسلالة." },
+                { x: 60, y: 80, label: "أرجل قوية", text: "عظام أرجل سميكة وقوية لتحمل الوزن الثقيل في المناطق الجبلية." },
+                { x: 25, y: 65, label: "الضرع المتوازن", text: "ضرع جيد التكوين رغم أنها سلالة مختلطة، مما يضمن تغذية العجول السريعة النمو." }
               ]
             },
             {
@@ -262,16 +301,17 @@ export const CONTENT: Record<string, TranslationContent> = {
               image: IMAGES.charolais,
               stats: { milk: "للعجول فقط", fat: "منخفض الدهون", protein: "عالي جداً", weight: "1000-1400 كغ" },
               clinicalProfile: { risks: "عسر ولادة مرتفع", resistance: "تحمل جيد للطقس", reproductive: "خصوبة متوسطة" },
-              description: "عملاقة اللحوم الفرنسية. تتميز بنمو عضلي استثنائي وسرعة تسمين عالية.",
+              description: "العملاق الأبيض. أكبر سلالات اللحم حجماً. تُعرف بظاهرة 'تضاعف العضلات' التي تعطي شكلاً ضخماً جداً للفخذ.",
               traits: ["نمو عضلي هائل", "لحم قليل الدهون", "وزن ثقيل"],
               expandedInfo: {
-                diet: "شرهة جداً؛ تحتاج مراعي غنية أو أعلاف مركزة لتحقيق إمكانات النمو.",
-                diseases: "المشكلة الرئيسية هي عسر الولادة (Dystocia) بسبب ضخامة الأجنة.",
-                breeding: "غالباً ما تستخدم في التهجين لزيادة وزن عجول الفطام."
+                diet: "تحتاج طاقة عالية جداً للنمو. لا تصلح للمراعي الفقيرة.",
+                diseases: "مشكلة عسر الولادة (Dystocia) تتطلب مراقبة بيطرية دائمة.",
+                breeding: "تستخدم كفحل نهائي (Terminal Sire) لزيادة وزن الذبائح."
               },
               hotspots: [
-                { x: 50, y: 50, label: "العضلات", text: "تضخم عضلي وراثي (Double Muscling)." },
-                { x: 80, y: 50, label: "الفخذ", text: "فخذ ضخم ومستدير." }
+                { x: 20, y: 55, label: "الفخذ المتضاعف", text: "جين (Double Muscling) يؤدي إلى تضخم الألياف العضلية في الفخذ الخلفي." },
+                { x: 60, y: 40, label: "الكتف العضلي", text: "كتل عضلية بارزة حتى في منطقة الكتف والرقبة." },
+                { x: 50, y: 50, label: "قلة الدهون", text: "طبقة دهون تحت جلدية رقيقة جداً، مما يرفع صافي اللحم (Yield Grade)." }
               ]
             },
             {
@@ -284,16 +324,17 @@ export const CONTENT: Record<string, TranslationContent> = {
               image: IMAGES.limousin,
               stats: { milk: "متوسط", fat: "منخفض", protein: "عالي الجودة", weight: "900-1100 كغ" },
               clinicalProfile: { risks: "عصبية المزاج", resistance: "مناعة قوية", reproductive: "سهولة ولادة جيدة" },
-              description: "توازن مثالي بين النمو العضلي وسهولة الولادة. لحمها ذو ألياف دقيقة وممتازة.",
+              description: "الأناقة العضلية. تجمع بين العضلات المفتولة والعظام الدقيقة، مما يعطي نسبة تصافي (Dressing Percentage) عالية جداً.",
               traits: ["سهولة ولادة", "مردود ذبيحة عالٍ", "جودة ألياف"],
               expandedInfo: {
-                diet: "كفاءة تحويل غذائي ممتازة حتى مع الأعلاف المتوسطة.",
-                diseases: "صحة عامة جيدة، لكن يجب الحذر من مزاجها العصبي أثناء التعامل البيطري.",
-                breeding: "مفضلة لإنتاج لحم العجل (Veal) واللحوم الحمراء الخالية من الدهون."
+                diet: "كفاءة تحويل غذائي ممتازة.",
+                diseases: "يجب الحذر من طباعها الحادة (Temperament) أثناء الفحص البيطري.",
+                breeding: "ألياف اللحم دقيقة وناعمة، مما يجعلها مفضلة لدى الجزارين."
               },
               hotspots: [
-                { x: 50, y: 50, label: "الظهر", text: "خط ظهر مستقيم وعريض." },
-                { x: 30, y: 30, label: "اللون", text: "هالات فاتحة حول العينين والخطم." }
+                { x: 85, y: 30, label: "هالات العين", text: "لون فاتح حول العينين والخطم (Muzzle)، صفة مميزة للسلالة." },
+                { x: 30, y: 50, label: "طول الجسم", text: "جسم طويل ومستطيل يوفر قطع لحم ممتازة من منطقة الظهر (Sirloin)." },
+                { x: 50, y: 80, label: "دقة العظام", text: "عظام دقيقة مقارنة بحجم العضلات، مما يعني وزناً أكبر للحم الصافي." }
               ]
             },
             {
@@ -306,16 +347,17 @@ export const CONTENT: Record<string, TranslationContent> = {
               image: IMAGES.aubrac,
               stats: { milk: "جيد للأمومة", fat: "متوسط", protein: "جيد", weight: "600-800 كغ" },
               clinicalProfile: { risks: "منخفضة", resistance: "عالية جداً (ريفية)", reproductive: "خصوبة وأمومة ممتازة" },
-              description: "سلالة ريفية (Rustique) بامتياز. صلبة، وتتحمل الظروف القاسية مع قدرات أمومة رائعة.",
+              description: "الأم المثالية. سلالة ريفية قوية، تتميز بقدرات أمومة عالية وحليب كافٍ لرضاعة العجل حتى الفطام بوزن ممتاز.",
               traits: ["ريفية", "سهولة ولادة", "أمومة"],
               expandedInfo: {
-                diet: "تثمن المراعي الفقيرة والنباتات الخشنة بكفاءة عالية.",
-                diseases: "مقاومة استثنائية للأمراض ومشاكل الأقدام.",
-                breeding: "تستخدم كخط أمومي لإنتاج عجول هجينة قوية."
+                diet: "معدة لهضم النباتات الفقيرة والشائكة.",
+                diseases: "مقاومة طبيعية للأمراض.",
+                breeding: "تستخدم لإنتاج إناث للتربية (F1) نظراً لخصوبتها العالية."
               },
               hotspots: [
-                { x: 30, y: 30, label: "العيون", text: "عيون مكحلة بالسواد (Maquillée)." },
-                { x: 50, y: 80, label: "الأقدام", text: "أظلاف سوداء صلبة جداً." }
+                { x: 80, y: 25, label: "الكحل", text: "تخطيط أسود حول العينين والأذنين، يعطيها مظهراً جميلاً ويحميها من انعكاس الضوء." },
+                { x: 50, y: 85, label: "الأظلاف الصلبة", text: "أظلاف سوداء صلبة جداً تمكنها من المشي في المناطق الصخرية الوعرة." },
+                { x: 40, y: 60, label: "الحوض الواسع", text: "حوض واسع وميلان مناسب يضمن سهولة الولادة (Calving Ease) دون مساعدة." }
               ]
             },
             {
@@ -328,16 +370,17 @@ export const CONTENT: Record<string, TranslationContent> = {
               image: IMAGES.normande,
               stats: { milk: "6,500 كغ", fat: "4.2%", protein: "3.6%", weight: "700-800 كغ" },
               clinicalProfile: { risks: "متوسطة", resistance: "جيدة للمناخ الرطب", reproductive: "خصوبة عالية" },
-              description: "تشتهر بحليبها الغني جداً بالبروتين (الجبن) ولحمها الرخامي ذي النكهة المميزة.",
+              description: "بقرة الجبن واللحم. حليبها غني جداً بالدهون والبروتين، ولحمها ذو نكهة خاصة وتوزيع دهني ممتاز.",
               traits: ["حليب دسم", "لحم رخامي", "تأقلم"],
               expandedInfo: {
-                diet: "تستفيد جيداً من المراعي الخضراء الغنية.",
-                diseases: "مقاومة جيدة لأشعة الشمس بفضل البقع حول العينين (النظارات).",
-                breeding: "الخيار الأول لأجبان الكاممبير."
+                diet: "تستجيب جيداً للمراعي الخضراء.",
+                diseases: "مقاومة لأشعة الشمس بفضل البقع الصبغية حول العين.",
+                breeding: "سلالة أساسية في مناطق إنتاج الأجبان الفرنسية."
               },
               hotspots: [
-                { x: 30, y: 30, label: "العيون", text: "بقع 'النظارات' تحمي من السرطان وأشعة الشمس." },
-                { x: 50, y: 50, label: "اللون", text: "نمط لوني مميز (مبقع)." }
+                { x: 82, y: 28, label: "النظارات", text: "بقع داكنة حول العين (Spectacles) تقلل من خطر الإصابة بسرطان العين (Squamous Cell Carcinoma) وتمنع وهج الشمس." },
+                { x: 50, y: 50, label: "اللون الثلاثي", text: "جلد مبقع بألوان داكنة وفاتحة يساعد في التنظيم الحراري." },
+                { x: 30, y: 65, label: "توازن الجسم", text: "جسم ممتلئ وعميق يشير إلى قدرة مزدوجة حقيقية (حليب ولحم)." }
               ]
             },
             {
@@ -350,16 +393,17 @@ export const CONTENT: Record<string, TranslationContent> = {
               image: IMAGES.brown_swiss,
               stats: { milk: "8,000 كغ", fat: "4.0%", protein: "3.5%", weight: "650-700 كغ" },
               clinicalProfile: { risks: "منخفضة", resistance: "تحمل حرارة ممتاز", reproductive: "طول عمر إنتاجي" },
-              description: "ثاني أكبر سلالة حليب عالمياً. تتميز بطول العمر الإنتاجي وتحمل الظروف المناخية المتنوعة.",
+              description: "الأرستقراطية الصلبة. تتميز بطول العمر الإنتاجي (Longevity)، مما يعني استبدالاً أقل للقطيع وربحية أعلى على المدى الطويل.",
               traits: ["طول عمر", "بروتين عال", "تحمل حرارة"],
               expandedInfo: {
-                diet: "كفاءة تحويل ممتازة للأعلاف الليفية.",
-                diseases: "أقدام قوية جداً ومقاومة للعرج.",
-                breeding: "تستخدم لتحسين نسبة البروتين وصلابة السلالات الأخرى."
+                diet: "قدرة هضمية عالية للألياف.",
+                diseases: "أرجل قوية جداً تقلل من تكاليف البيطار.",
+                breeding: "تستخدم لرفع نسبة البروتين في الحليب."
               },
               hotspots: [
-                { x: 30, y: 30, label: "الأذنين", text: "داخل الأذنين فاتح اللون ومكسو بالشعر." },
-                { x: 50, y: 80, label: "الأقدام", text: "أقدام سوداء قوية جداً." }
+                { x: 88, y: 25, label: "الأذن المشعرة", text: "داخل الأذن فاتح ومكسو بالشعر الكثيف، حماية طبيعية من الظروف الجوية." },
+                { x: 50, y: 85, label: "المفاصل القوية", text: "مفاصل وأرجل سوداء صلبة جداً، ميزة أساسية لطول العمر في القطيع." },
+                { x: 45, y: 45, label: "الجلد السميك", text: "جلد سميك وشعر كثيف يوفر عزلاً حرارياً ممتازاً في البرد والحر." }
               ]
             },
             {
@@ -372,16 +416,17 @@ export const CONTENT: Record<string, TranslationContent> = {
               image: IMAGES.tarentaise,
               stats: { milk: "5,000 كغ", fat: "3.8%", protein: "3.4%", weight: "550 كغ" },
               clinicalProfile: { risks: "منخفضة", resistance: "عالية جداً (جبلية)", reproductive: "خصوبة عالية" },
-              description: "سلالة جبلية صلبة جداً. تتسلق المنحدرات الوعرة وتنتج حليباً خاصاً للأجبان.",
+              description: "متسلقة الجبال. صغيرة، رشيقة، قوية القلب والرئتين. تعيش في ارتفاعات لا تتحملها السلالات الأخرى.",
               traits: ["جبلية", "حليب أجبان", "صلابة"],
               expandedInfo: {
-                diet: "تقتات على مراعي المرتفعات الفقيرة.",
-                diseases: "مقاومة استثنائية لأمراض الجهاز التنفسي والظروف المناخية القاسية.",
-                breeding: "تستخدم في المناطق الجبلية الوعرة."
+                diet: "تقتات على الأعشاب الألبية القصيرة.",
+                diseases: "نادرة الإصابة بأمراض الجهاز التنفسي.",
+                breeding: "مثالية للمناطق الوعرة وشبه الصحراوية."
               },
               hotspots: [
-                { x: 30, y: 30, label: "الرأس", text: "رأس معبر وعيون داكنة." },
-                { x: 50, y: 50, label: "الجسم", text: "جسم مدمج وقوي للعضلات." }
+                { x: 85, y: 30, label: "العيون المكحلة", text: "تصبغ داكن حول العين والأنف والأطراف لحماية الأغشية المخاطية." },
+                { x: 50, y: 50, label: "القفص الصدري", text: "صدر عميق جداً بالنسبة لحجمها الصغير، مما يوفر سعة رئوية للأكسجين في المرتفعات." },
+                { x: 20, y: 75, label: "العضلات الجافة", text: "عضلات قوية ولكن غير ضخمة، مثالية للحركة المستمرة والتسلق." }
               ]
             }
           ]
@@ -411,7 +456,11 @@ export const CONTENT: Record<string, TranslationContent> = {
           labels: {
             color: "اللون",
             height: "الارتفاع",
-            weight: "الوزن"
+            weight: "الوزن",
+            population: "التعداد",
+            diet: "التغذية والرعي",
+            diseases: "مقاومة الأمراض",
+            breeding: "نظام التربية"
           },
           subBreeds: [
             { 
@@ -515,7 +564,7 @@ export const CONTENT: Record<string, TranslationContent> = {
         ]
       },
       conclusion: {
-        title: "التقييم النهائي",
+        title: "الخاتمة العلمية",
         quiz: {
           title: "الامتحان الشامل",
           questions: [
@@ -528,10 +577,13 @@ export const CONTENT: Record<string, TranslationContent> = {
           ]
         },
         report: {
-          title: "تقرير الكفاءة البحثية",
-          rank: "الرتبة العلمية:",
+          title: "شهادة الكفاءة البحثية",
+          rank: "المستوى العلمي:",
           score: "المعدل النهائي:",
-          message: "أداء ممتاز يدل على استيعاب عميق للمفاهيم."
+          message: [
+            "في ختام هذا البحث، نستخلص أن اختيار السلالة البقرية ليس عملية عشوائية، بل قرار علمي معقد يعتمد على المثلث الذهبي: الوراثة، البيئة، والإدارة. إن الاعتماد الكلي على السلالات المستوردة عالية الإنتاج دون توفير الظروف البيئية المناسبة (تغذية، تبريد) هو وصفة للفشل الاقتصادي والصحي في الجزائر. لذلك، يكمن دوركم كأطباء بيطريين مستقبليين في توجيه المربين نحو السلالات الأكثر ملائمة لقدراتهم وظروفهم.",
+            "كما نؤكد على الضرورة الملحة للحفاظ على السلالات المحلية (السمراء الأطلسية) كخزان جيني استراتيجي للأمن الغذائي المستقبلي، خاصة في ظل التغيرات المناخية. إن التهجين المدروس الذي يجمع بين إنتاجية الغرب ومقاومة الشرق هو المسار الأمثل لتحقيق اكتفاء ذاتي مستدام في مادتي الحليب واللحوم الحمراء."
+          ]
         }
       }
     }
@@ -545,10 +597,26 @@ export const CONTENT: Record<string, TranslationContent> = {
       "Department of Veterinary Sciences"
     ],
     header: {
-      title: "Ethnological Study of Cattle Breeds",
-      subtitle: "Academic Research: Reality, Challenges & Prospects",
-      badges: ["Master 2026", "Genomics", "Food Security"],
+      title: "Cattle Breeds in the World and Algeria",
+      subtitle: "Research Directed to First-Year Vet Students",
       glossaryBtn: "Scientific Glossary"
+    },
+    ui: {
+      printBtn: "Print Full Research",
+      closeBtn: "Close",
+      printTitle: "Academic Research Report"
+    },
+    quizLabels: {
+      nextQuestion: "Next Question",
+      completeSelection: "Complete Selection & Unlock Research",
+      confirmSelection: "Confirm Answer",
+      correctFeedback: "Correct Answer",
+      incorrectFeedback: "Incorrect Answer",
+      excellentAnalysis: "Excellent Analysis!",
+      incorrectAssessment: "Incorrect Assessment",
+      question: "Question",
+      explanation: "Scientific Explanation",
+      correctAnswer: "Correct Answer"
     },
     nav: {
       cover: "Home",
@@ -571,16 +639,16 @@ export const CONTENT: Record<string, TranslationContent> = {
     },
     sections: {
       cover: {
-        title: "Comparative Analytical Study of Cattle Breeds in Algeria and the World",
-        preparedBy: "Prepared by Research Students:",
+        title: "Cattle Breeds in the World and Algeria: A Comparative Study",
+        preparedBy: "Prepared by the two students:",
         students: ["Ahmed Ryadh Delliha", "Mouna Lakhdari"],
         supervisor: "Supervised by Faculty Staff",
         year: "Academic Year: 2025 / 2026",
         cta: "Start Presentation"
       },
       intro: {
-        title: "Theoretical Foundations of Ethnology",
-        subtitle: "Phylogeny and Domestication History",
+        title: "Introduction to Veterinary Ethnology",
+        subtitle: "Gateway for Veterinary Students",
         quiz: {
           title: "Knowledge Gateway",
           questions: [
@@ -599,8 +667,11 @@ export const CONTENT: Record<string, TranslationContent> = {
           ]
         },
         content: {
-          title: "Domestication & Evolution",
-          text: "Cattle domestication began ~10,500 years ago in the Fertile Crescent. This long path led to massive genetic differentiation based on climate and human needs.",
+          title: "Why Study Breeds?",
+          text: [
+            "Distinguishing between breeds is the cornerstone of a successful veterinarian. This research is specifically directed at first-year students to understand the morphological and physiological differences between dairy, beef, and mixed breeds. The 'Bos taurus' differs significantly from 'Bos indicus' not only in appearance but in immune response, drug metabolism, and climatic adaptation.",
+            "Furthermore, environment plays a critical role in shaping phenotype. Local Algerian breeds have evolved unique physiological mechanisms to withstand drought and heat, known as genetic adaptation. Studying these mechanisms opens new horizons for improving animal production without disrupting the ecological balance, which is the essence of Animal Science (Zootechnie)."
+          ],
           cards: [
             { title: "Bos taurus", desc: "Temperate zones. Early maturity, high production.", icon: "T" },
             { title: "Bos indicus", desc: "Tropical zones (Zebu). Parasite resistance, heat tolerance.", icon: "I" }
@@ -636,7 +707,15 @@ export const CONTENT: Record<string, TranslationContent> = {
             color: "Color",
             height: "Height",
             weight: "Weight",
-            origin: "Origin"
+            origin: "Origin",
+            clinicalProfile: "Clinical Profile",
+            diet: "Diet & Nutrition",
+            diseases: "Common Diseases",
+            breeding: "Breeding Practices",
+            traits: "Key Traits",
+            risks: "Risks",
+            resistance: "Resistance",
+            reproductive: "Reproductive"
           },
           breeds: [
             {
@@ -855,7 +934,7 @@ export const CONTENT: Record<string, TranslationContent> = {
                 breeding: "Top choice for Camembert cheese production."
               },
               hotspots: [
-                { x: 30, y: 30, label: "Eyes", text: "'Spectacle' patches protect from sun cancer." },
+                { x: 30, y: 30, label: "Eyes", text: "Taches 'lunettes' protégeant du cancer solaire." },
                 { x: 50, y: 50, label: "Coat", text: "Distinctive spotted coat pattern." }
               ]
             },
@@ -930,7 +1009,11 @@ export const CONTENT: Record<string, TranslationContent> = {
           labels: {
             color: "Color",
             height: "Height",
-            weight: "Weight"
+            weight: "Weight",
+            population: "Population",
+            diet: "Diet & Grazing",
+            diseases: "Disease Resistance",
+            breeding: "Breeding System"
           },
           subBreeds: [
             { 
@@ -1050,7 +1133,10 @@ export const CONTENT: Record<string, TranslationContent> = {
           title: "Research Competency Report",
           rank: "Scientific Rank:",
           score: "Final Score:",
-          message: "Excellent performance indicating deep understanding of concepts."
+          message: [
+            "In conclusion, breed selection is not random but a complex scientific decision based on the golden triangle: Genetics, Environment, and Management. Relying solely on imported high-yield breeds without appropriate environmental conditions is a recipe for economic failure. Your role as future veterinarians is to guide breeders towards the most suitable breeds.",
+            "We also emphasize the urgent need to preserve local breeds (Brown Atlas) as a strategic genetic reservoir for food security. Controlled crossbreeding combining Western productivity with Eastern resilience is the optimal path for sustainable self-sufficiency."
+          ]
         }
       }
     }
@@ -1064,10 +1150,26 @@ export const CONTENT: Record<string, TranslationContent> = {
       "Département des Sciences Vétérinaires"
     ],
     header: {
-      title: "Étude Ethnologique des Races Bovines",
-      subtitle: "Recherche Académique : Réalité, Défis et Perspectives",
-      badges: ["Master 2026", "Génomique", "Sécurité Alimentaire"],
+      title: "Races Bovines dans le Monde et en Algérie",
+      subtitle: "Recherche destinée aux étudiants de 1ère année vétérinaire",
       glossaryBtn: "Glossaire Scientifique"
+    },
+    ui: {
+      printBtn: "Imprimer la Recherche Complète",
+      closeBtn: "Fermer",
+      printTitle: "Rapport de Recherche Académique"
+    },
+    quizLabels: {
+      nextQuestion: "Question Suivante",
+      completeSelection: "Terminer et Déverrouiller",
+      confirmSelection: "Confirmer la Réponse",
+      correctFeedback: "Réponse Correcte",
+      incorrectFeedback: "Réponse Incorrecte",
+      excellentAnalysis: "Excellente Analyse !",
+      incorrectAssessment: "Évaluation Incorrecte",
+      question: "Question",
+      explanation: "Explication Scientifique",
+      correctAnswer: "Réponse Correcte"
     },
     nav: {
       cover: "Accueil",
@@ -1090,16 +1192,16 @@ export const CONTENT: Record<string, TranslationContent> = {
     },
     sections: {
       cover: {
-        title: "Étude Analytique Comparative des Races Bovines en Algérie et dans le Monde",
-        preparedBy: "Préparé par les étudiants chercheurs :",
+        title: "Races Bovines dans le Monde et en Algérie : Étude Comparative",
+        preparedBy: "Préparé par les deux étudiants :",
         students: ["Ahmed Ryadh Delliha", "Mouna Lakhdari"],
         supervisor: "Sous la supervision du corps professoral",
         year: "Année Universitaire : 2025 / 2026",
         cta: "Commencer la Présentation"
       },
       intro: {
-        title: "Fondements Théoriques de l'Ethnologie",
-        subtitle: "Phylogénie et Histoire de la Domestication",
+        title: "Introduction à l'Ethnologie Vétérinaire",
+        subtitle: "Portail pour les étudiants vétérinaires",
         quiz: {
           title: "Portail des Connaissances",
           questions: [
@@ -1118,8 +1220,11 @@ export const CONTENT: Record<string, TranslationContent> = {
           ]
         },
         content: {
-          title: "Domestication et Évolution",
-          text: "La domestication des bovins a commencé il y a environ 10 500 ans dans le Croissant Fertile. Ce long chemin a conduit à une différenciation génétique massive basée sur le climat.",
+          title: "Pourquoi étudier les races ?",
+          text: [
+            "La distinction entre les races est la pierre angulaire d'un vétérinaire performant. Cette recherche est spécifiquement destinée aux étudiants de première année pour comprendre les différences morphologiques et physiologiques entre les races laitières, bouchères et mixtes. Le 'Bos taurus' diffère considérablement du 'Bos indicus', non seulement par son apparence, mais aussi par sa réponse immunitaire et son adaptation climatique.",
+            "De plus, l'environnement joue un rôle crucial dans le façonnement du phénotype. Les races locales algériennes ont développé des mécanismes physiologiques uniques pour résister à la sécheresse et à la chaleur, connus sous le nom d'adaptation génétique. L'étude de ces mécanismes ouvre de nouvelles perspectives pour améliorer la production animale sans perturber l'équilibre écologique, ce qui est l'essence de la Zootechnie."
+          ],
           cards: [
             { title: "Bos taurus", desc: "Zones tempérées. Maturité précoce, haute production.", icon: "T" },
             { title: "Bos indicus", desc: "Zones tropicales (Zébu). Résistance aux parasites.", icon: "I" }
@@ -1155,7 +1260,15 @@ export const CONTENT: Record<string, TranslationContent> = {
             color: "Couleur",
             height: "Hauteur",
             weight: "Poids",
-            origin: "Origine"
+            origin: "Origine",
+            clinicalProfile: "Profil Clinique",
+            diet: "Alimentation et Nutrition",
+            diseases: "Maladies Courantes",
+            breeding: "Pratiques d'Élevage",
+            traits: "Traits Clés",
+            risks: "Risques",
+            resistance: "Résistance",
+            reproductive: "Reproduction"
           },
           breeds: [
             {
@@ -1434,7 +1547,7 @@ export const CONTENT: Record<string, TranslationContent> = {
             {
               id: "dz1",
               text: "La principale race indigène en Algérie est :",
-              explanation: "La Brune de l'Atlas est la race ancestrale de l'Afrique du Nord.",
+              explanation: "La Brune de l'Atlas est la race ancestrale d'Afrique du Nord.",
               options: [{ id: "a", text: "Tachetée de l'Est", isCorrect: false }, { id: "b", text: "Brune de l'Atlas", isCorrect: true }]
             }
           ]
@@ -1442,29 +1555,33 @@ export const CONTENT: Record<string, TranslationContent> = {
         content: {
           title: "La Brune de l'Atlas : Patrimoine Biologique",
           description: "La 'Brune de l'Atlas' est un réservoir génétique rare, caractérisé par une résilience exceptionnelle aux conditions difficiles.",
-          heroExpandedText: "Cette race s'est adaptée sur des milliers d'années à l'environnement nord-africain. Elle possède une efficacité unique de conversion des végétaux grossiers et une résistance naturelle aux maladies du sang transmises par les tiques (Babésiose & Theilériose). Cependant, sa faible production laitière (env. 1000L) has conduit à des croisements anarchiques.",
+          heroExpandedText: "Cette race s'est adaptée pendant des milliers d'années à l'environnement nord-africain. Elle possède une efficacité unique de conversion alimentaire pour la végétation grossière et une résistance naturelle aux maladies sanguines transmises par les tiques (Babésiose & Theillériose). Cependant, sa faible production laitière (environ 1000L) a conduit à des croisements indiscriminés.",
           readMore: "Détails Environnementaux",
           showLess: "Masquer",
           subBreedsTitle: "Écotypes (Sous-races)",
           labels: {
             color: "Couleur",
             height: "Hauteur",
-            weight: "Poids"
+            weight: "Poids",
+            population: "Population",
+            diet: "Alimentation et Pâturage",
+            diseases: "Résistance aux Maladies",
+            breeding: "Système d'Élevage"
           },
           subBreeds: [
             { 
               name: "Guelmoise", 
               region: "Montagnes de l'Est", 
               features: "Petite, grise, grimpeuse.",
-              color: "Gris foncé",
+              color: "Gris Foncé",
               height: "115 cm",
               weight: "250-300 kg",
               status: "En Danger",
-              population: "Poches isolées à Guelma et Souk Ahras.",
+              population: "Poches isolées à Guelma & Souk Ahras.",
               coordinates: [36.4621, 7.4261],
               regionPolygon: [[36.2, 7.2], [36.8, 7.2], [36.8, 8.0], [36.2, 8.0]],
               expandedInfo: {
-                diet: "Dépend des broussailles de montagne et du sous-bois ; résiste à la pénurie alimentaire.",
+                diet: "Dépend des broussailles de montagne et des sous-bois forestiers ; résiste à la pénurie alimentaire.",
                 diseases: "Haute résistance à la Babésiose transmise par les tiques de montagne.",
                 breeding: "Élevage extensif traditionnel ; vêlage extrêmement facile sans assistance."
               }
@@ -1472,12 +1589,12 @@ export const CONTENT: Record<string, TranslationContent> = {
             { 
               name: "Cheurfa", 
               region: "Steppe", 
-              features: "Claire, résistante à la sécheresse.",
-              color: "Blanche / Sable",
+              features: "Couleur claire, résistante à la sécheresse.",
+              color: "Blanc / Sable",
               height: "120 cm",
               weight: "300 kg",
               status: "Vulnérable",
-              population: "En déclin dû à la désertification.",
+              population: "En déclin à cause de la désertification.",
               coordinates: [34.6728, 3.2630],
               regionPolygon: [[34.0, 2.5], [35.2, 2.5], [35.2, 4.0], [34.0, 4.0]],
               expandedInfo: {
@@ -1489,18 +1606,18 @@ export const CONTENT: Record<string, TranslationContent> = {
             { 
               name: "Sétifienne", 
               region: "Sétif", 
-              features: "Noirâtre, mixte.",
-              color: "Noire / Brun foncé",
+              features: "Noircâtre, mixte.",
+              color: "Noir / Brun Foncé",
               height: "125 cm",
               weight: "350 kg",
               status: "À Risque",
-              population: "Fortement croisée avec races importées.",
+              population: "Fortement croisée avec des races importées.",
               coordinates: [36.1898, 5.4108],
               regionPolygon: [[35.8, 5.0], [36.5, 5.0], [36.5, 5.8], [35.8, 5.8]],
               expandedInfo: {
-                diet: "Se nourrit de résidus de récolte (chaumes) et pâturages naturels des hauts plateaux.",
-                diseases: "Rustique contre le froid hivernal mais vulnérable aux problèmes de croisement anarchique.",
-                breeding: "Utilisée pour le trait et le lait ; l'IA menace sa pureté génétique."
+                diet: "Se nourrit de résidus de récolte (chaumes) et de pâturages naturels des hauts plateaux.",
+                diseases: "Robuste contre les hivers froids mais vulnérable aux problèmes de croisements indiscriminés.",
+                breeding: "Utilisée pour la traction et le lait ; l'IA pose une menace pour la pureté génétique."
               }
             },
             { 
@@ -1511,12 +1628,12 @@ export const CONTENT: Record<string, TranslationContent> = {
               height: "128 cm",
               weight: "380 kg",
               status: "Critique",
-              population: "Quasi-éteinte à l'état pur.",
+              population: "Presque éteinte sous forme pure.",
               coordinates: [36.1652, 1.3345],
               regionPolygon: [[35.8, 0.8], [36.5, 0.8], [36.5, 1.8], [35.8, 1.8]],
               expandedInfo: {
-                diet: "Valorise les terres agricoles fertiles de la vallée du Chélif.",
-                diseases: "Autrefois résistante aux pestes locales ; la faible population augmente le risque de maladies génétiques.",
+                diet: "Utilise les terres agricoles fertiles de la vallée du Chélif.",
+                diseases: "Autrefois résistante aux ravageurs locaux ; la faible population augmente le risque de maladies génétiques.",
                 breeding: "Presque entièrement remplacée par des races laitières importées."
               }
             }
@@ -1569,7 +1686,10 @@ export const CONTENT: Record<string, TranslationContent> = {
           title: "Rapport de Compétence de Recherche",
           rank: "Rang Scientifique :",
           score: "Score Final :",
-          message: "Excellente performance indiquant une compréhension profonde des concepts."
+          message: [
+            "En conclusion, le choix de la race n'est pas aléatoire mais une décision scientifique complexe basée sur le triangle d'or : Génétique, Environnement et Gestion. S'appuyer uniquement sur des races importées à haut rendement sans conditions environnementales appropriées est une recette pour l'échec économique. Votre rôle en tant que futurs vétérinaires est de guider les éleveurs vers les races les plus adaptées.",
+            "Nous soulignons également l'urgence de préserver les races locales (Brune de l'Atlas) comme réservoir génétique stratégique pour la sécurité alimentaire. Le croisement contrôlé combinant la productivité occidentale et la résilience orientale est la voie optimale pour une autosuffisance durable."
+          ]
         }
       }
     }

@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ethnological Study of Cattle Breeds - Master Thesis</title>
+    <title>Ethnological Study of Cattle Breeds</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts: Tajawal & Cairo for Arabic, Montserrat/Inter for Latin -->
@@ -99,6 +100,36 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #475569;
       }
+
+      /* Print Specific Styles */
+      @media print {
+        body {
+          background: white !important;
+          color: black !important;
+        }
+        /* Hide everything by default in print */
+        #root > * {
+          display: none !important;
+        }
+        /* Show only the print container */
+        #print-container {
+          display: block !important;
+        }
+        /* Reset specific interactive elements for print if they slip through */
+        button, aside, .glass-panel, .glass-card {
+          box-shadow: none !important;
+          backdrop-filter: none !important;
+          background: white !important;
+          color: black !important;
+          border: 1px solid #ccc !important;
+        }
+        .page-break {
+          page-break-before: always;
+        }
+        .avoid-break {
+          page-break-inside: avoid;
+        }
+      }
     </style>
   <script type="importmap">
 {
@@ -108,10 +139,14 @@
     "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
-    "leaflet": "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js"
+    "leaflet": "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js",
+    "vite": "https://aistudiocdn.com/vite@^7.2.7",
+    "path": "https://aistudiocdn.com/path@^0.12.7",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
+<link rel="stylesheet" href="/index.css">
 </head>
   <body class="bg-thesis-gradient text-slate-100 min-h-screen overflow-x-hidden antialiased selection:bg-blue-500 selection:text-white">
     <div id="root"></div>
